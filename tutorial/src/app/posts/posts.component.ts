@@ -16,6 +16,18 @@ export class PostsComponent implements OnInit {
     this.postsService.getAllPosts().subscribe(posts => {
       this.posts = posts;
     });
+
+    // var chris = new User({
+    //   name: 'Chris',
+    //   username: 'sevilayha',
+    //   password: 'password' 
+    // });
+
+    chris.save(function(err) {
+  if (err) throw err;
+
+  console.log('User saved successfully!');
+});
   }
 
 }
