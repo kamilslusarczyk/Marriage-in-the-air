@@ -1,0 +1,9 @@
+<div class="col-md-8 col-md-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <label>Content</label>
+            <input ngModel name="content" type="text" id="content" class="form-control" required>
+        </div>
+        <button class="btn-primary" type="submit">Click me</button>
+    </form>
+</div>
