@@ -8,7 +8,6 @@ import { MessageService } from "./message.service";
 })
 export class MessageComponent {
     @Input() message: Message;
-    @Output() editClicked = new EventEmitter<string>()
     color = "red";
 
     constructor(private messageService: MessageService) {
@@ -16,10 +15,10 @@ export class MessageComponent {
     }
 
     onEdit() {
-        this.editClicked.emit("a new value");
+        this.messageService.editMessage(this.message)
     }
 
     onDelete() {
-        this.messageService.deleteMessage(this.message);
+        this.messageService.deleteMessage(this.message).subscribe(result => console.log(result));
     }
 }

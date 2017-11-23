@@ -9,8 +9,7 @@ import { OnInit } from "@angular/core";
             <div class="col-md-8 col-md-offset-2">
             <app-message 
             *ngFor="let message of messages"
-            [message] ="message"
-             (editClicked)="message.content = $event"></app-message>
+            [message] ="message"></app-message>
             </div>`,
 })
 export class MessageListComponent implements OnInit {
@@ -21,6 +20,8 @@ export class MessageListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.messages = this.messageService.getMessages();
+        this.messageService.getMessages().subscribe((messages: Message[]) => {
+            this.messages = messages;
+        });
     }
 }
