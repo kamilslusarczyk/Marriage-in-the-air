@@ -3,5 +3,5 @@ export let config = {
         root: "http://localhost:3000",
         news: "/news"
     }
-}
+};
 
