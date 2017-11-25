@@ -6,7 +6,6 @@ import { Component } from "@angular/core";
     template: `
     <header>
         <ul>
-        <li><a [routerLink]="['/messages']">Messenger</a></li>
         <li><a [routerLink]="['/auth']">Authentication</a></li>
         </ul>
     </header>`
