@@ -20,10 +20,10 @@ var schema = new Schema({
         type: String,
         required: true
     },
-    messages: [{
-        type: Schema.Types.ObjectId,
-        ref: 'News'
-    }]
+    // messages: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'News'
+    // }]
 });
 
 // THIS IS NICE !!!

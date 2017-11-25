@@ -8,7 +8,7 @@ import { NewsComponent } from "./news/news.component";
 
 import { AuthenticationComponent } from './auth/authentication.component';
 import { HeaderComponent } from './header.component';
-import { routing } from './app.routing';
+// import { routing } from './app.routing';
 import { LogoutComponent } from './auth/logout.component';
 import { SignupComponent } from './auth/signup.component';
 import { SignInComponent } from './auth/signin.component';
@@ -28,7 +28,7 @@ import {HttpClientModule} from '@angular/common/http';
         SignupComponent,
         SignInComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule,  routing, ReactiveFormsModule, HttpModule],
+    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule],
     bootstrap: [AppComponent]
 })
 export class AppModule {

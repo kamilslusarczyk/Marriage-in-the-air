@@ -8,13 +8,13 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class NewsService {
     Newses: News[]
+    // conf: IConfig;
 
     constructor(private http: HttpClient) {
-        
+        // this.conf = config;
     }
 
     getNewses() : Observable<News> {
-        debugger;
         return this.http.get<News>(config.URLS.root + config.URLS.news);
     }
 }
