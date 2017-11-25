@@ -15,8 +15,31 @@ export class NewsListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // var news = new News("DUPA", new Date());
+        // this.newsService.addNews(news).subscribe(
+        //     // Successful responses call the first callback.
+        //     data => {
+        //         console.log(data);
+        //     },
+        //     // Errors will call this callback instead:
+        //     err => {
+        //         console.log('Something went wrong!');
+        //     }
+        // );
 
+        // var news = new News("DUPA", new Date());
         debugger;
+        this.newsService.getNews("5a196ad357501038c4f394f1").subscribe(
+            // Successful responses call the first callback.
+            data => {
+                console.log(data);
+            },
+            // Errors will call this callback instead:
+            err => {
+                console.log('Something went wrong!');
+            }
+        );
+
         this.newsService.getNewses().subscribe(
             // Successful responses call the first callback.
             data => {
@@ -24,7 +47,6 @@ export class NewsListComponent implements OnInit {
             },
             // Errors will call this callback instead:
             err => {
-                debugger;
                 console.log('Something went wrong!');
             }
         );
