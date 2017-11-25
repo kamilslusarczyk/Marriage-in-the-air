@@ -7,6 +7,7 @@ import { Component } from "@angular/core";
     <header>
         <ul>
         <li><a [routerLink]="['/auth']">Authentication</a></li>
+        <li><a [routerLink]="['/administration']">Administration</a></li>
         </ul>
     </header>`
 })
