@@ -20,7 +20,7 @@ export class NewsService {
     }
 
     getNews(id: string) : Observable<News> {
-        return this.http.get<News>(this.apiPath + '/' + id);
+        return this.http.get<any>(this.apiPath + '/' + id);
     } 
 
     addNews(news: News): Observable<boolean> {
@@ -28,6 +28,7 @@ export class NewsService {
     }
 
     deleteNews(news: News): Observable<boolean> {
+        debugger;
         return this.http.put<boolean>(this.apiPath, news);
     }
 }

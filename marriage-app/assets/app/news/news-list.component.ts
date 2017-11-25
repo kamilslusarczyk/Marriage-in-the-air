@@ -26,13 +26,23 @@ export class NewsListComponent implements OnInit {
         //         console.log('Something went wrong!');
         //     }
         // );
-
+        var news;
         // var news = new News("DUPA", new Date());
-        debugger;
-        this.newsService.getNews("5a196ad357501038c4f394f1").subscribe(
+        this.newsService.getNews("5a19816492c9053ea0d67669").subscribe(
             // Successful responses call the first callback.
             data => {
-                console.log(data);
+                debugger;
+                news = data.obj;
+                this.newsService.deleteNews(news).subscribe(
+                    // Successful responses call the first callback.
+                    data => {
+                        console.log(data);
+                    },
+                    // Errors will call this callback instead:
+                    err => {
+                        console.log('Something went wrong!');
+                    }
+                );
             },
             // Errors will call this callback instead:
             err => {
