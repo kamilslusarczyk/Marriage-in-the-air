@@ -26,23 +26,14 @@ export class NewsListComponent implements OnInit {
         //         console.log('Something went wrong!');
         //     }
         // );
-        var news;
-        // var news = new News("DUPA", new Date());
-        this.newsService.getNews("5a19816492c9053ea0d67669").subscribe(
+        // var news;
+        // // var news = new News("DUPA", new Date());
+        this.newsService.getNews("5a19b12b86493016149cac0c").subscribe(
             // Successful responses call the first callback.
             data => {
-                debugger;
-                news = data.obj;
-                this.newsService.deleteNews(news).subscribe(
-                    // Successful responses call the first callback.
-                    data => {
-                        console.log(data);
-                    },
-                    // Errors will call this callback instead:
-                    err => {
-                        console.log('Something went wrong!');
-                    }
-                );
+                console.log("Single:")
+                console.log(data.Data);
+                console.log(data.Message);
             },
             // Errors will call this callback instead:
             err => {
@@ -53,7 +44,9 @@ export class NewsListComponent implements OnInit {
         this.newsService.getNewses().subscribe(
             // Successful responses call the first callback.
             data => {
-                console.log(data);
+                console.log("Multiple");
+                console.log(data.Data);
+                console.log(data.Message);
             },
             // Errors will call this callback instead:
             err => {

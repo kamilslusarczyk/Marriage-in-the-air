@@ -8,16 +8,11 @@ var ExceptionService = require('../services/exceptionService')
 router.get('/', function (req, res, next) {
     News.find()
         .exec(function (err, docs) {
-            if (err) {
-                return res.status(500).json({
-                    title: "An error",
-                    error: err
-                })
-            }
-
+            ExceptionService.MongoosHelper.HandleRequest(err, null, docs);
+            
             res.status(200).json({
-                message: "Newses retreived properly.",
-                obj: docs
+                Message: "Newses retreived properly.",
+                Data: docs
             });
         });
 });
@@ -30,8 +25,8 @@ router.get('/:id', function (req, res, next) {
         ExceptionService.MongoosHelper.HandleRequest(err, null, news);
 
         res.status(200).json({
-            message: "News retreived properly.",
-            obj: news
+            Message: "News retreived properly.",
+            Data: news
         });
     });
 });
@@ -42,16 +37,11 @@ router.post('/', function (req, res, next) {
         content: req.body.content
     });
     news.save(function (err, result) {
-        if (err) {
-            return res.status(500).json({
-                title: "An error",
-                error: err
-            })
-        }
+        ExceptionService.MongoosHelper.HandleRequest(err, null, result);
 
         res.status(201).json({
-            message: "Ok!",
-            obj: true
+            Message: "Ok!",
+            Data: true
         });
     });
 });
@@ -60,9 +50,12 @@ router.post('/', function (req, res, next) {
 router.put('/', function (req, res, next) {
     var newsId = req.body._id;
     News.remove({ "_id": ObjectId(newsId) }, function (err, message) {
-        ExceptionService.MongoosHelper.HandleRequest(err, null, newsId);
+        ExceptionService.MongoosHelper.HandleRequest(err, null, message);
 
-        return true;
+        res.status(201).json({
+            Message: "Ok!",
+            Data: true
+        });
     });
 });
 
