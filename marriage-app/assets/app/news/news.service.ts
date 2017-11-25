@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { News } from "./news.model";
 import { config } from "../common/config";
 import { Observable } from "rxjs/Observable";
+import { ResponseBase } from "../common/responseBase";
 
 
 @Injectable()
@@ -15,20 +16,19 @@ export class NewsService {
         this.apiPath = config.URLS.root + config.URLS.news;
     }
 
-    getNewses() : Observable<News[]> {
-        return this.http.get<News[]>(this.apiPath);
+    getNewses() : Observable<ResponseBase> {
+        return this.http.get<ResponseBase>(this.apiPath);
     }
 
-    getNews(id: string) : Observable<News> {
-        return this.http.get<any>(this.apiPath + '/' + id);
+    getNews(id: string) : Observable<ResponseBase> {
+        return this.http.get<ResponseBase>(this.apiPath + '/' + id);
     } 
 
-    addNews(news: News): Observable<boolean> {
-        return this.http.post<boolean>(this.apiPath, news);
+    addNews(news: News): Observable<ResponseBase> {
+        return this.http.post<ResponseBase>(this.apiPath, news);
     }
 
-    deleteNews(news: News): Observable<boolean> {
-        debugger;
-        return this.http.put<boolean>(this.apiPath, news);
+    deleteNews(news: News): Observable<ResponseBase> {
+        return this.http.put<ResponseBase>(this.apiPath, news);
     }
 }
