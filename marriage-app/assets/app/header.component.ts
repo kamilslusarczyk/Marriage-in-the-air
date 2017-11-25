@@ -6,7 +6,8 @@ import { Component } from "@angular/core";
     template: `
     <header>
         <ul>
-        
+        <li><a [routerLink]="['/auth']">Authentication</a></li>
+        <li><a [routerLink]="['/administration']">Administration</a></li>
         </ul>
     </header>`
 })
