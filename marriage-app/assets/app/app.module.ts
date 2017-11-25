@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 
@@ -15,6 +15,7 @@ import { SignInComponent } from './auth/signin.component';
 import { HttpModule } from '@angular/http';
 import { NewsListComponent } from './news/news-list.component';
 import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
     declarations: [
