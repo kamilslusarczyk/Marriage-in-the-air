@@ -41,7 +41,6 @@ router.post('/', function (req, res, next) {
     var news = new News({
         content: req.body.content
     });
-
     news.save(function (err, result) {
         if (err) {
             return res.status(500).json({
