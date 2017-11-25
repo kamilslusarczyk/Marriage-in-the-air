@@ -12,7 +12,6 @@ import { SignInComponent } from "./auth/signin.component";
 import { AdminHomeComponent } from "./admin/admin-home.component";
 import { AdminNewsComponent } from "./admin/admin-news.component";
 
-
 @NgModule({
     declarations: [
         AppComponent,
