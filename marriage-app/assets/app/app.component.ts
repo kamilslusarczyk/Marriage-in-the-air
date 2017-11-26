@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-
 import { NewsService } from "./news/news.service";
 
 @Component({

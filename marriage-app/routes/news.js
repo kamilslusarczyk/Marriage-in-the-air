@@ -36,7 +36,6 @@ router.post('/', function (req, res, next) {
     var news = new News({
         content: req.body.content
     });
-
     news.save(function (err, result) {
         ExceptionService.MongoosHelper.HandleRequest(err, null, result);
 
