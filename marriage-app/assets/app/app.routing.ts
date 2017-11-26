@@ -4,6 +4,8 @@ import { RouterModule } from "@angular/router";
 import { AUTH_ROUTES } from "./auth/auth.routes";
 import { ADMIN_ROUTES } from "./admin/admin.routes";
 import { AdminHomeComponent } from "./admin/admin-home.component";
+import { RouterModule } from "@angular/router";
+import { NewsComponent } from "./news/news.component";
 
 const APP_ROUTES: Routes = [
     {path: "auth", component: AuthenticationComponent, children: AUTH_ROUTES},
