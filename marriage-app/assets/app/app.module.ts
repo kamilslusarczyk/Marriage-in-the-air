@@ -11,6 +11,9 @@ import { SignupComponent } from "./auth/signup.component";
 import { SignInComponent } from "./auth/signin.component";
 import { AdminHomeComponent } from "./admin/admin-home.component";
 import { AdminNewsComponent } from "./admin/admin-news.component";
+import { AdminMenuComponent } from "./admin/admin-menu.component";
+import { NgPrimeModule } from "./common/ng-prime.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -21,9 +24,16 @@ import { AdminNewsComponent } from "./admin/admin-news.component";
         SignupComponent,
         SignInComponent,
         AdminHomeComponent,
-        AdminNewsComponent
+        AdminNewsComponent,
+        AdminMenuComponent
     ],
-    imports: [BrowserModule, FormsModule,  routing, ReactiveFormsModule, HttpModule],
+    imports: [BrowserModule,
+        FormsModule,
+        routing,
+        ReactiveFormsModule,
+        HttpModule,
+        NgPrimeModule,
+        BrowserAnimationsModule],
     bootstrap: [AppComponent]
 })
 export class AppModule {
