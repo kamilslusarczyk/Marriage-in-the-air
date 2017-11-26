@@ -15,6 +15,7 @@ import { SignInComponent } from './auth/signin.component';
 import { HttpModule } from '@angular/http';
 import { NewsListComponent } from './news/news-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NewsItemComponent } from "./news/news-item.component";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {HttpClientModule} from '@angular/common/http';
         AppComponent,
         NewsComponent,
         NewsListComponent,
+        NewsItemComponent,
         AuthenticationComponent,
         HeaderComponent,
         LogoutComponent,

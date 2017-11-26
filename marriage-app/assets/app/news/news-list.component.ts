@@ -9,7 +9,7 @@ import { NewsService } from "./news.service";
 export class NewsListComponent implements OnInit {
 
     Newses: News[] = [];
-    b: any;
+
     constructor(private newsService: NewsService) {
 
     }
@@ -17,38 +17,30 @@ export class NewsListComponent implements OnInit {
     ngOnInit(): void {
         // var news = new News("DUPA", new Date());
         // this.newsService.addNews(news).subscribe(
-        //     // Successful responses call the first callback.
         //     data => {
         //         console.log(data);
         //     },
-        //     // Errors will call this callback instead:
         //     err => {
         //         console.log('Something went wrong!');
         //     }
         // );
         // var news;
         // // var news = new News("DUPA", new Date());
-        this.newsService.getNews("5a19b12b86493016149cac0c").subscribe(
-            // Successful responses call the first callback.
-            data => {
-                console.log("Single:")
-                console.log(data.Data);
-                console.log(data.Message);
-            },
-            // Errors will call this callback instead:
-            err => {
-                console.log('Something went wrong!');
-            }
-        );
+        // this.newsService.getNews("5a19b12b86493016149cac0c").subscribe(
+        //     data => {
+        //         console.log("Single:")
+        //         console.log(data.Data);
+        //         console.log(data.Message);
+        //     },
+        //     err => {
+        //         console.log('Something went wrong!');
+        //     }
+        // );
 
         this.newsService.getNewses().subscribe(
-            // Successful responses call the first callback.
             data => {
-                console.log("Multiple");
-                console.log(data.Data);
-                console.log(data.Message);
+                this.Newses = data.Data;
             },
-            // Errors will call this callback instead:
             err => {
                 console.log('Something went wrong!');
             }

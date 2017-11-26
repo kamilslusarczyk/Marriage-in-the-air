@@ -1,2 +1,14 @@
+<h1>
+    Hello from news list
+</h1>
+<hr>
+<nav class="navbar navbar-light bg-light internal-nav">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search newses" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
 
-<h1>Hello from news list</h1>
+<div *ngFor="let news of Newses">
+    <news-item [newsInstance]="news"></news-item>
+</div>
