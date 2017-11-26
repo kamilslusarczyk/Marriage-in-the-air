@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var appRoutes = require('./routes/app');
 var newsRoutes = require('./routes/news');
 
+// require('./public/stylesheets/styles.less');
+
 var app = express();
 mongoose.connect('localhost:27017/marriage');
 

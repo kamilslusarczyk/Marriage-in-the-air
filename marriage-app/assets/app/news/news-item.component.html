@@ -1,0 +1,19 @@
+<div class="alert alert-success" role="alert" (click)="newsClick()">
+    <h4 class="alert-heading">This is sample news layout</h4>
+    <p>
+        News content is: {{newsInstance.content}}
+    </p>
+    <hr>
+    <p class="mb-0">
+        It was published on {{newsInstance.dateOfPublication | date: 'dd/MM/yyyy hh:mm:ss'}}.
+    </p>
+</div>
+<div *ngIf="clicked">
+    <div>
+        More detailed info about news:
+    </div>
+    {{newsInstance.content}}
+    News category: 
+    Author
+    And so on...
+</div>
