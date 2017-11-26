@@ -8,7 +8,11 @@ import { DatePipe } from '@angular/common';
     templateUrl: './news-item.component.html',
 })
 export class NewsItemComponent {
- 
     @Input()
     newsInstance: News;
+    clicked = false;
+
+    newsClick() {
+        this.clicked = !this.clicked;
+    }
 }

@@ -10,7 +10,7 @@ import { NewsItemComponent } from "./news/news-item.component";
 
 import { AuthenticationComponent } from "./auth/authentication.component";
 import { HeaderComponent } from "./header.component";
-// import { routing } from "./app.routing";
+import { routing } from "./app.routing";
 import { LogoutComponent } from "./auth/logout.component";
 import { SignupComponent } from "./auth/signup.component";
 import { SignInComponent } from "./auth/signin.component";
@@ -31,7 +31,7 @@ import { AdminNewsComponent } from "./admin/admin-news.component";
         AdminHomeComponent,
         AdminNewsComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule],
+    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing],
     bootstrap: [AppComponent]
 })
 export class AppModule {
