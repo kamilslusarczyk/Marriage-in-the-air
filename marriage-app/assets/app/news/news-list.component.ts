@@ -1,7 +1,9 @@
-import { Component, } from "@angular/core";
+import { Component, OnChanges, SimpleChanges } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { OnInit } from "@angular/core";
 import { News } from "./news.model"
 import { NewsService } from "./news.service";
+
 @Component({
     selector: "news-list",
     templateUrl: './news-list.component.html',
@@ -9,9 +11,16 @@ import { NewsService } from "./news.service";
 export class NewsListComponent implements OnInit {
 
     Newses: News[] = [];
+    FilteredNewses: News[] = [];
+    searchNewsesControl: FormControl;
 
     constructor(private newsService: NewsService) {
+        this.searchNewsesControl = new FormControl("");
+    }
 
+    searchInputChanged(): void {
+        var controlValueParsed = String(this.searchNewsesControl.value);
+        this.FilteredNewses = this.Newses.filter(x => x.content.toLowerCase().includes(controlValueParsed.toLowerCase()));
     }
 
     ngOnInit(): void {
@@ -40,11 +49,11 @@ export class NewsListComponent implements OnInit {
         this.newsService.getNewses().subscribe(
             data => {
                 this.Newses = data.Data;
+                this.FilteredNewses = this.Newses;
             },
             err => {
                 console.log('Something went wrong!');
             }
         );
     }
-
 }
