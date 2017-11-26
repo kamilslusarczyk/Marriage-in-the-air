@@ -7,14 +7,11 @@ import { Component } from "@angular/core";
     <header>
         <nav>
             <li>
-                <a [routerLink]="['signin']">Sign in</a>
-                <a [routerLink]="['signup']">Sign up</a>
-                <a [routerLink]="['logout']">Log out</a>
+               
             </li>
         </nav>
     </header>
     <div>
-        <router-outlet></router-outlet>
     </div>`
 })
 export class AuthenticationComponent {

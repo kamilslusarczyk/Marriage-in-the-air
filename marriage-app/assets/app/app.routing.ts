@@ -1,6 +1,6 @@
+
 import {Routes} from "@angular/router";
 import { AuthenticationComponent } from "./auth/authentication.component";
-import { RouterModule } from "@angular/router";
 import { AUTH_ROUTES } from "./auth/auth.routes";
 import { ADMIN_ROUTES } from "./admin/admin.routes";
 import { AdminHomeComponent } from "./admin/admin-home.component";

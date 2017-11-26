@@ -4,6 +4,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
+import { NewsComponent } from "./news/news.component";
+import { NewsListComponent } from "./news/news-list.component";
+
 import { AuthenticationComponent } from "./auth/authentication.component";
 import { HeaderComponent } from "./header.component";
 import { routing } from "./app.routing";
@@ -19,6 +22,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
     declarations: [
         AppComponent,
+        NewsComponent,
+        NewsListComponent,
         AuthenticationComponent,
         HeaderComponent,
         LogoutComponent,
