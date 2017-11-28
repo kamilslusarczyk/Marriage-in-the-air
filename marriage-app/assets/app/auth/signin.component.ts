@@ -15,6 +15,7 @@ import { Router } from "@angular/router";
 })
 export class SignInComponent {
     myForm: FormGroup;
+    showError: boolean;
 
     constructor(private router: Router, private authService: AuthService) {
 
@@ -37,18 +38,23 @@ export class SignInComponent {
     }
 
     onSubmit() {
+        this.showError = false;
         const user = new User(this.myForm.value.email, this.myForm.value.password);
+
+        this.signInUser(user);
+        this.myForm.reset();
+    }
+
+    signInUser(user: User) {
         this.authService.signin(user).subscribe(data => {
-            debugger;
-            console.log(data);
+
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
+
             this.router.navigateByUrl('/');
         },
         error => {
-                debugger;
-                console.log(error);
-            });
-        this.myForm.reset();
+                this.showError = true;
+        });
     }
 }

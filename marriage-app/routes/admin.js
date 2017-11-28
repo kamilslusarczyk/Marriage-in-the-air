@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
@@ -28,7 +29,10 @@ router.post("/dummyCreate", function (req, res, next) {
 
 router.post("/signin", function (req, res, next) {
     User.findOne({email: req.body.email}, function(err, user){
-        ExceptionService.MongoosHelper.HandleRequest(err, null, user);
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
+
+        if(error)
+            return error;
 
         if(! bcrypt.compareSync(req.body.password, user.password)){
             return res.status(501).json({
