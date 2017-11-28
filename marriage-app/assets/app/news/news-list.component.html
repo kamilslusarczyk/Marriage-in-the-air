@@ -1,0 +1,13 @@
+<h1>
+    Hello from news list
+</h1>
+<hr>
+<nav class="navbar navbar-light bg-light internal-nav">
+    <form class="form-inline" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search newses" aria-label="Search" [formControl]="searchNewsesControl" (keyup)="searchInputChanged()">
+    </form>
+</nav>
+
+<div *ngFor="let news of FilteredNewses">
+    <news-item [newsInstance]="news"></news-item>
+</div>
