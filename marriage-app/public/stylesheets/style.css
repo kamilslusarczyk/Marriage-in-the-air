@@ -25,3 +25,11 @@ a.danger {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}

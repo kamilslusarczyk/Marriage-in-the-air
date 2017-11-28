@@ -12,10 +12,10 @@ import { AuthenticationComponent } from "./auth/authentication.component";
 import { HeaderComponent } from "./header.component";
 import { routing } from "./app.routing";
 import { LogoutComponent } from "./auth/logout.component";
-import { SignupComponent } from "./auth/signup.component";
 import { SignInComponent } from "./auth/signin.component";
 import { AdminHomeComponent } from "./admin/admin-home.component";
 import { AdminNewsComponent } from "./admin/admin-news.component";
+import { AuthService } from "./auth/auth.service";
 
 @NgModule({
     declarations: [
@@ -26,12 +26,12 @@ import { AdminNewsComponent } from "./admin/admin-news.component";
         AuthenticationComponent,
         HeaderComponent,
         LogoutComponent,
-        SignupComponent,
         SignInComponent,
         AdminHomeComponent,
         AdminNewsComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

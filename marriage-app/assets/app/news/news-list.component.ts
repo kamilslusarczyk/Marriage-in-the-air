@@ -46,14 +46,14 @@ export class NewsListComponent implements OnInit {
         //     }
         // );
 
-        this.newsService.getNewses().subscribe(
-            data => {
-                this.Newses = data.Data;
-                this.FilteredNewses = this.Newses;
-            },
-            err => {
-                console.log('Something went wrong!');
-            }
-        );
+        // this.newsService.getNewses().subscribe(
+        //     data => {
+        //         this.Newses = data.Data;
+        //         this.FilteredNewses = this.Newses;
+        //     },
+        //     err => {
+        //         console.log('Something went wrong!');
+        //     }
+        // );
     }
 }

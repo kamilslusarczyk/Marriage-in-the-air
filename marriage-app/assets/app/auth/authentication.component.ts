@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { AuthService } from "./auth.service";
 
 
 @Component({
@@ -7,13 +8,22 @@ import { Component } from "@angular/core";
     <header>
         <nav>
             <li>
-               
+            <a [routerLink]="['signin']">Sign in</a>
+            <a [routerLink]="['logout']">Log out</a>
             </li>
         </nav>
     </header>
     <div>
+    <router-outlet></router-outlet>
     </div>`
 })
 export class AuthenticationComponent {
 
+    constructor(private authService: AuthService){
+
+    }
+    
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
+    }
 }
