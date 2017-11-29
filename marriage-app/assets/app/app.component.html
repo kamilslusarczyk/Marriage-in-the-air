@@ -15,8 +15,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                <li *ngIf="!isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['administration/signin']" class="nav-link">Sign in</a>
+                </li>
+                <li *ngIf="isLoggedIn()" class="nav-item">
+                    <a (click)="logout()" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -25,5 +28,6 @@
         </div>
     </nav>
     <app-header></app-header>
+    <router-outlet></router-outlet>
     <news></news>
 </div>

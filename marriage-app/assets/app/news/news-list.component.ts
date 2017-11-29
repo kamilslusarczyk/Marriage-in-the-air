@@ -50,6 +50,7 @@ export class NewsListComponent implements OnInit {
             data => {
                 this.Newses = data.Data;
                 this.FilteredNewses = this.Newses;
+                console.log(this.Newses)
             },
             err => {
                 console.log('Something went wrong!');
