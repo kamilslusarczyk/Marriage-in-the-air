@@ -15,4 +15,8 @@ export class NewsItemComponent {
     newsClick() {
         this.clicked = !this.clicked;
     }
+
+    belongsToUser() {
+        return localStorage.getItem('userId') === this.newsInstance.userId;
+    }
 }

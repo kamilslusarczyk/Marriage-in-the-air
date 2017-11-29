@@ -28,11 +28,9 @@ export class SignInComponent {
         });
         // var u = new User("a", "b", "c", "d");
         // this.authService.signup(u).subscribe(data => {
-        //     debugger;
         //     console.log(data)
         // },
         //     error => {
-        //         debugger;
         //         console.log(error);
         //     });
     }
