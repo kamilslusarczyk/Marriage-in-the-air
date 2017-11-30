@@ -4,6 +4,7 @@ export let config = {
         news: "/news",
         admin: "/admin",
         adminDummyCreate: "/dummyCreate",
-        adminSignIn: "/signin"
+        adminSignIn: "/signin",
+        marriageDetails: "/details"
     }
 };
