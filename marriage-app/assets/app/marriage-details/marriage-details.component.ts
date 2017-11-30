@@ -9,9 +9,10 @@ import { MarriageDetails } from "./marriageDetails.model";
     templateUrl: "./marriage-details.component.html"
 })
 export class MarriageDetailsComponent implements OnInit {
+    marriageDetails: MarriageDetails;
 
     ngOnInit(): void {
-        // var sampleDetails = new MarriageDetails("A", new Date(), 1,2);
+        // var sampleDetails = new MarriageDetails("A", new Date(), 51.508742,-0.120850);
         // this.marriageDetailsService.addMarriageDetails(sampleDetails).subscribe(
         //     data => {
         //         debugger;
@@ -25,11 +26,9 @@ export class MarriageDetailsComponent implements OnInit {
 
         this.marriageDetailsService.get().subscribe(
             data => {
-                debugger;
-                console.log(data);
+                this.marriageDetails = data.Data[0];
             },
             err => {
-                debugger;
                 console.log('Something went wrong!');
             }
         );
