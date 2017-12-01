@@ -27,6 +27,16 @@ export class SignInComponent {
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', Validators.required),
         });
+<<<<<<< 301e5229e707b866a9c1a735e1c74013f9cf1216
+=======
+        // var u = new User("a", "b", "c", "d");
+        // this.authService.signup(u).subscribe(data => {
+        //     console.log(data)
+        // },
+        //     error => {
+        //         console.log(error);
+        //     });
+>>>>>>> Authentication done
     }
 
     onSubmit() {

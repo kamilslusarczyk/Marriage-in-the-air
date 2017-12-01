@@ -11,7 +11,10 @@ router.get("/",function(req, res, next){
 <<<<<<< db6efcfce2f759cdde2bfc1eb615bef49f349d41
 =======
     user.save(function (err, result) {
-        ExceptionService.MongoosHelper.HandleRequest(err, null, result);
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
+
+        if (error)
+            return error;
 
         res.status(200).json({
             Message: "User created properly.",
@@ -22,13 +25,13 @@ router.get("/",function(req, res, next){
 });
 
 router.post("/signin", function (req, res, next) {
-    User.findOne({email: req.body.email}, function(err, user){
+    User.findOne({ email: req.body.email }, function (err, user) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
 
-        if(error)
+        if (error)
             return error;
 
-        if(! bcrypt.compareSync(req.body.password, user.password)){
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
             return res.status(501).json({
                 Message: "Password or username incorrect",
                 Data: user
@@ -38,8 +41,8 @@ router.post("/signin", function (req, res, next) {
         var token = jwt.sign({
             user: user
         }, 'secret', {
-            expiresIn: 7200
-        });
+                expiresIn: 7200
+            });
 
         res.status(200).json({
             Message: "Logged in",
