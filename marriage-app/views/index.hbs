@@ -21,3 +21,27 @@
 </body>
 
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        function initializeMap() {
+            var latitude = document.getElementById('lat').innerHTML;
+            var longtitude = document.getElementById('lon').innerHTML;
+
+            var mapProp = {
+                center: new google.maps.LatLng(latitude, longtitude),
+                zoom: 5,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            var centerOfMap = new google.maps.LatLng(latitude, longtitude)
+            var marker = new google.maps.Marker({ position: centerOfMap });
+
+            marker.setMap(map);
+        }
+
+        initializeMap();
+    });
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb7CprExvmVMmqITy_BLsxdA2-G0q4OEk"></script>

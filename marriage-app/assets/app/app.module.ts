@@ -14,6 +14,8 @@ import { SignInComponent } from "./auth/signin.component";
 import { AdminHomeComponent } from "./admin/admin-home.component";
 import { AdminNewsComponent } from "./admin/admin-news.component";
 import { AuthService } from "./auth/auth.service";
+import { MarriageDetailsComponent } from "./marriage-details/marriage-details.component";
+import { MarriageDetailsService } from "./marriage-details/marriage-details.service";
 
 @NgModule({
     declarations: [
@@ -24,10 +26,11 @@ import { AuthService } from "./auth/auth.service";
         HeaderComponent,
         SignInComponent,
         AdminHomeComponent,
-        AdminNewsComponent
+        AdminNewsComponent,
+        MarriageDetailsComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing],
-    providers: [AuthService],
+    providers: [AuthService, MarriageDetailsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
