@@ -1,4 +1,4 @@
-HandleError = function (err, fn, res) {
+HandleError = function (err, fn) {
 
     if (err) {
         if (fn)
@@ -10,7 +10,7 @@ HandleError = function (err, fn, res) {
         })
     }
 };
-HandleNullValue = function (entity, res) {
+HandleNullValue = function (entity) {
     if (!entity) {
         return res.status(500).json({
             title: "Entity not found",
@@ -22,9 +22,9 @@ HandleNullValue = function (entity, res) {
 };
 
 var MongoosHelper = {
-    HandleRequest: function (err, fn, entity, res) {
-        return HandleError(err, fn, res) ||
-        HandleNullValue(entity, res);
+    HandleRequest: function (err, fn, entity) {
+        HandleError(err, fn);
+        HandleNullValue(entity);
     }
 }
 

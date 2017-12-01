@@ -3,9 +3,6 @@
 <h1>Sign up</h1>
 
 <div class="col-md-8">
-    <div *ngIf="showError" class="alert alert-danger" role="alert">
-        <strong>Oh snap!</strong> Change email or password and try submitting again.
-    </div>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Mail</label>
