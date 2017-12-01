@@ -9,6 +9,7 @@ import { ResponseBase } from "../common/responseBase";
 @Injectable()
 export class NewsService {
     Newses: News[]
+    // conf: IConfig;
     apiPath: string;
 
     constructor(private http: HttpClient) {
@@ -24,12 +25,10 @@ export class NewsService {
     } 
 
     addNews(news: News): Observable<ResponseBase> {
-        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.post<ResponseBase>(this.apiPath + token, news);
+        return this.http.post<ResponseBase>(this.apiPath, news);
     }
 
     deleteNews(news: News): Observable<ResponseBase> {
-        const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.put<ResponseBase>(this.apiPath + token, news);
+        return this.http.put<ResponseBase>(this.apiPath, news);
     }
 }

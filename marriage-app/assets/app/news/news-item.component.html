@@ -9,12 +9,11 @@
     </p>
 </div>
 <div *ngIf="clicked">
-    <div class="card col-md-10 offset-md-1 margin-bottom-20 margin-top-20">
-        <div class="card-block">
-          <h4 class="card-title">Your news!</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Some short content</h6>
-          <p class="card-text">{{newsInstance.content}}</p>
-          <a href="#" class="card-link">Contact an author (this news was crated by {{newsInstance.user.firstName}})</a>
-        </div>
-      </div>
+    <div>
+        More detailed info about news:
+    </div>
+    {{newsInstance.content}}
+    News category: 
+    Author
+    And so on...
 </div>

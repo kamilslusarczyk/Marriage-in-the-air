@@ -6,7 +6,7 @@ import { NewsService } from "./news.service";
 
 @Component({
     selector: "news-list",
-    templateUrl: "./news-list.component.html",
+    templateUrl: './news-list.component.html',
 })
 export class NewsListComponent implements OnInit {
 
@@ -50,10 +50,9 @@ export class NewsListComponent implements OnInit {
             data => {
                 this.Newses = data.Data;
                 this.FilteredNewses = this.Newses;
-                console.log(this.Newses);
             },
             err => {
-                console.log("Something went wrong!");
+                console.log('Something went wrong!');
             }
         );
     }
