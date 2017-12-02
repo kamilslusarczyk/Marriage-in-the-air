@@ -32,7 +32,12 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
+    //this is for route creation to call API in Node.js
     getToken(){
         return localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
+    }
+
+    getTokenForStatistics() {
+        return localStorage.getItem('token');
     }
 }
