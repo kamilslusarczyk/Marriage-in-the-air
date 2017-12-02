@@ -16,6 +16,10 @@ import { AdminNewsComponent } from "./admin/admin-news.component";
 import { AuthService } from "./auth/auth.service";
 import { MarriageDetailsComponent } from "./marriage-details/marriage-details.component";
 import { MarriageDetailsService } from "./marriage-details/marriage-details.service";
+import { StatisticsComponent } from "./admin/admin-stats.component";
+import { StatisticsService } from "./statistics/statistics.service";
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -27,10 +31,11 @@ import { MarriageDetailsService } from "./marriage-details/marriage-details.serv
         SignInComponent,
         AdminHomeComponent,
         AdminNewsComponent,
-        MarriageDetailsComponent
+        MarriageDetailsComponent,
+        StatisticsComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing],
-    providers: [AuthService, MarriageDetailsService],
+    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing, NgxChartsModule, BrowserAnimationsModule],
+    providers: [AuthService, MarriageDetailsService, StatisticsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

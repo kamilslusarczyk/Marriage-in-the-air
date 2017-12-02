@@ -7,7 +7,7 @@ import { StatisticsService } from "./statistics/statistics.service";
 @Component({
     selector: 'my-app',
     templateUrl: './app.component.html',
-    providers: [NewsService, StatisticsService]
+    providers: [NewsService]
 })
 export class AppComponent {
 

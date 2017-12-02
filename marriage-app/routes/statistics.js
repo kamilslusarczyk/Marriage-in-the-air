@@ -18,4 +18,19 @@ router.post('/', function (req, res, next) {
 
 });
 
+router.get('/', function (req, res, next) {
+    StatisticsEntry.find()
+        .exec(function (err, docs) {
+            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
+
+            if (error)
+                return error;
+
+            res.status(200).json({
+                Message: "Statistics retreived properly.",
+                Data: docs
+            });
+        });
+});
+
 module.exports = router;

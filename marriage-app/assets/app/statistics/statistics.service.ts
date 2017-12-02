@@ -6,6 +6,8 @@ import { Observable } from "rxjs/Observable";
 import { ResponseBase } from "../common/responseBase";
 import { HttpClient } from "@angular/common/http";
 import { config } from "../common/config";
+import { Array } from "core-js/library/web/timers";
+var _ = require('lodash');
 
 @Injectable()
 export class StatisticsService {
@@ -26,7 +28,30 @@ export class StatisticsService {
         this.checkIfShouldCallApiToSendStatisticsChunk();
     }
 
-    addEntryToLocalStorage(entry: StatisticEntry) {
+    getVisitedUrls(): Array<any> {
+        var result = [];
+
+        this.getStatisticsFromServer().subscribe(
+            data => {
+                let dataGroupedByUrl = _.groupBy(data.Data, stats => stats.url); 
+
+                for(var key in dataGroupedByUrl) {
+                    var value = dataGroupedByUrl[key];
+
+                    result.push({
+                        "name": key,
+                        "value": value.length
+                    })
+                }
+            },
+            err => {
+                result = err;
+            }
+        );
+        return result;
+    }
+
+    private addEntryToLocalStorage(entry: StatisticEntry) {
         var existingItems = this.getExistingItemsParsed();
         if (!existingItems)
             existingItems = [];
@@ -35,11 +60,11 @@ export class StatisticsService {
         localStorage.setItem(this._localStorageCode, JSON.stringify(existingItems));
     }
 
-    removeEntryFromLocalStorage() {
+    private removeEntryFromLocalStorage() {
         localStorage.removeItem(this._localStorageCode);
     }
 
-    checkIfShouldCallApiToSendStatisticsChunk() {
+    private checkIfShouldCallApiToSendStatisticsChunk() {
         var existingItems = this.getExistingItemsParsed();
         if(existingItems.length < this._statisticsChunkThreshold)
             return;
@@ -54,11 +79,15 @@ export class StatisticsService {
             );
     }
 
-    getExistingItemsParsed() : Array<StatisticEntry> {
+    private getExistingItemsParsed() : Array<StatisticEntry> {
         return JSON.parse(localStorage.getItem(this._localStorageCode));
     }
 
-    sendStatisticsToServer(items: Array<StatisticEntry>) : Observable<ResponseBase>{
+    private sendStatisticsToServer(items: Array<StatisticEntry>) : Observable<ResponseBase>{
         return this.http.post<ResponseBase>(this._apiPath, items);
+    }
+
+    private getStatisticsFromServer() : Observable<ResponseBase> {
+        return this.http.get<ResponseBase>(this._apiPath);
     }
 }
