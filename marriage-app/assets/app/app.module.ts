@@ -20,6 +20,8 @@ import { StatisticsComponent } from "./admin/admin-stats.component";
 import { StatisticsService } from "./statistics/statistics.service";
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodosService } from "./toDo/toDo.service";
+import { StringExtensionService } from "./common/stringExtensions.service";
 
 @NgModule({
     declarations: [
@@ -35,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         StatisticsComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing, NgxChartsModule, BrowserAnimationsModule],
-    providers: [AuthService, MarriageDetailsService, StatisticsService],
+    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

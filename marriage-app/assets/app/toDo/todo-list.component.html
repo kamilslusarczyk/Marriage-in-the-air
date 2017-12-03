@@ -1,0 +1,10 @@
+<hr>
+<nav class="navbar navbar-light bg-light internal-nav">
+    <form class="form-inline" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search to do's" aria-label="Search" [formControl]="searchTodosControl" (keyup)="searchInputChanged()">
+    </form>
+</nav>
+
+<div class="margin-top-20" *ngFor="let todo of FilteredTodos">
+    <todo-item [toDoInstance]="todo"></todo-item>
+</div>

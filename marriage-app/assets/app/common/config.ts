@@ -6,6 +6,7 @@ export let config = {
         adminDummyCreate: "/dummyCreate",
         adminSignIn: "/signin",
         marriageDetails: "/details",
-        statistics: "/stats"
+        statistics: "/stats",
+        todos: "/todos"
     }
 };
