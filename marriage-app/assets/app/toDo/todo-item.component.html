@@ -1,4 +1,4 @@
-<div class="alert alert-success" role="alert" (click)="newsClick()">
+<div class="alert alert-success" role="alert">
     <h4 class="alert-heading">This is sample to do layout</h4>
     <p>
         To do content is: {{toDoInstance.content}}
@@ -10,6 +10,8 @@
     <div *ngIf="toDoInstance">
         <input type="checkbox" [(ngModel)]="toDoInstance.isDone" (change)="updateEntity($event)"/>
     </div>
-    <p *ngIf="toDoInstance?.isDone">A</p>
-    <p *ngIf="!toDoInstance?.isDone">B</p>
+    <!-- <p *ngIf="toDoInstance?.isDone">A</p>
+    <p *ngIf="!toDoInstance?.isDone">B</p> -->
 </div>
+
+<p-growl [(value)]="messages"></p-growl>

@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Todo } from "./todo.model";
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { TodosService } from "./toDo.service";
-
+import {Message} from 'primeng/components/common/api';
 @Component({
     selector: "todo-item",
     templateUrl: './todo-item.component.html',
@@ -21,7 +21,8 @@ export class TodoItemComponent implements OnInit {
     updateEntity(event) {
         this.todoService.update(this.toDoInstance).subscribe(
             data => {
-                debugger;
+                this.messages = [];
+                this.messages.push({severity:'success', summary:'You have succesfully updated To Do!', detail:''});
             },
             err => {
                 console.log('Something went wrong!');
@@ -30,5 +31,7 @@ export class TodoItemComponent implements OnInit {
 
     @Input()
     toDoInstance: Todo;
+
+    messages: Message[] = [];
 
 }
