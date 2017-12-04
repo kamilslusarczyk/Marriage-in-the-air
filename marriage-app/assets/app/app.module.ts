@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { NewsComponent } from "./news/news.component";
-import { NewsListComponent } from './news/news-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import { NewsListComponent } from "./news/news-list.component";
+import {HttpClientModule} from "@angular/common/http";
 import { NewsItemComponent } from "./news/news-item.component";
 
 import { HeaderComponent } from "./header.component";
@@ -18,13 +18,14 @@ import { MarriageDetailsComponent } from "./marriage-details/marriage-details.co
 import { MarriageDetailsService } from "./marriage-details/marriage-details.service";
 import { StatisticsComponent } from "./admin/admin-stats.component";
 import { StatisticsService } from "./statistics/statistics.service";
-import {NgxChartsModule} from '@swimlane/ngx-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TodosService } from "./toDo/toDo.service";
 import { StringExtensionService } from "./common/stringExtensions.service";
 import { TodoComponent } from "./toDo/toDo.component";
 import { TodosListComponent } from "./toDo/todo-list.component";
 import { TodoItemComponent } from "./toDo/todo-item.component";
+import { PrimeNgModule } from "./common/primeng.module";
 
 @NgModule({
     declarations: [
@@ -42,7 +43,15 @@ import { TodoItemComponent } from "./toDo/todo-item.component";
         TodosListComponent,
         TodoItemComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing, NgxChartsModule, BrowserAnimationsModule],
+    imports: [BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        routing,
+        NgxChartsModule,
+        BrowserAnimationsModule,
+        PrimeNgModule],
     providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService],
     bootstrap: [AppComponent]
 })
