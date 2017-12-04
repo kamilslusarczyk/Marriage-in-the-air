@@ -26,6 +26,7 @@ import { TodoComponent } from "./toDo/toDo.component";
 import { TodosListComponent } from "./toDo/todo-list.component";
 import { TodoItemComponent } from "./toDo/todo-item.component";
 import { PrimeNgModule } from "./common/primeng.module";
+import { MessageHelperService } from "./common/messageHelper.service";
 
 @NgModule({
     declarations: [
@@ -52,7 +53,7 @@ import { PrimeNgModule } from "./common/primeng.module";
         NgxChartsModule,
         BrowserAnimationsModule,
         PrimeNgModule],
-    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService],
+    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService, MessageHelperService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

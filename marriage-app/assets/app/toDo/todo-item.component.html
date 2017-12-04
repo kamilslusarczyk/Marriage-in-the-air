@@ -1,17 +1,15 @@
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">This is sample to do layout</h4>
-    <p>
-        To do content is: {{toDoInstance.content}}
-    </p>
+    <textarea (input)="controlValueChanged()" pInputTextarea [(ngModel)]="toDoInstance.content"></textarea>
     <hr>
     <p class="mb-0">
         It was published on {{toDoInstance.dateOfPublication | date: 'dd/MM/yyyy hh:mm:ss'}}.
     </p>
-    <div *ngIf="toDoInstance">
-        <input type="checkbox" [(ngModel)]="toDoInstance.isDone" (change)="updateEntity($event)"/>
+    Is already done: <p-checkbox [(ngModel)]="toDoInstance.isDone" binary="true" (onChange)="controlValueChanged()"></p-checkbox>
+    <div *ngIf="inputViolated">
+        <button (click)="updateEntity()" pButton type="button" label="Save"></button>
     </div>
-    <!-- <p *ngIf="toDoInstance?.isDone">A</p>
-    <p *ngIf="!toDoInstance?.isDone">B</p> -->
+    <button pButton (click)="deleteEntity()" type="button" label="Delete"></button>
 </div>
 
 <p-growl [(value)]="messages"></p-growl>

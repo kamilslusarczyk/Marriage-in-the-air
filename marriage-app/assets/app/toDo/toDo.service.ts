@@ -25,7 +25,8 @@ export class TodosService {
         return this.http.put<ResponseBase>(this._apiPath, todo);
     }
 
-    delete(todo: Todo) { //: Observable<ResponseBase> {
-        // return this.http.put<ResponseBase>(this._apiPath, todo);
+    delete(todo: Todo) : Observable<ResponseBase> {
+        todo.toDelete = true;
+        return this.http.put<ResponseBase>(this._apiPath, todo);
     }
 }
