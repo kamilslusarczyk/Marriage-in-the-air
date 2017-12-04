@@ -19,6 +19,16 @@ export class TodosListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // let todo = new Todo("Testowy task", true, new Date());
+        // this.todoService.add(todo).subscribe(
+        //     data => {
+        //         this.Todos = data.Data;
+        //         this.FilteredTodos = this.Todos;
+        //     },
+        //     err => {
+        //         console.log('Something went wrong!');
+        //     }
+        // );
         this.getTodos();
     }
 

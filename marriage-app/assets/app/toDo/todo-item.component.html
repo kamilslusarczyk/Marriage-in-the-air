@@ -1,0 +1,15 @@
+<div class="alert alert-success" role="alert" (click)="newsClick()">
+    <h4 class="alert-heading">This is sample to do layout</h4>
+    <p>
+        To do content is: {{toDoInstance.content}}
+    </p>
+    <hr>
+    <p class="mb-0">
+        It was published on {{toDoInstance.dateOfPublication | date: 'dd/MM/yyyy hh:mm:ss'}}.
+    </p>
+    <div *ngIf="toDoInstance">
+        <input type="checkbox" [(ngModel)]="toDoInstance.isDone" (change)="updateEntity($event)"/>
+    </div>
+    <p *ngIf="toDoInstance?.isDone">A</p>
+    <p *ngIf="!toDoInstance?.isDone">B</p>
+</div>

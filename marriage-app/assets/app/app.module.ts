@@ -22,6 +22,9 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodosService } from "./toDo/toDo.service";
 import { StringExtensionService } from "./common/stringExtensions.service";
+import { TodoComponent } from "./toDo/toDo.component";
+import { TodosListComponent } from "./toDo/todo-list.component";
+import { TodoItemComponent } from "./toDo/todo-item.component";
 
 @NgModule({
     declarations: [
@@ -34,7 +37,10 @@ import { StringExtensionService } from "./common/stringExtensions.service";
         AdminHomeComponent,
         AdminNewsComponent,
         MarriageDetailsComponent,
-        StatisticsComponent
+        StatisticsComponent,
+        TodoComponent,
+        TodosListComponent,
+        TodoItemComponent
     ],
     imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing, NgxChartsModule, BrowserAnimationsModule],
     providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService],
