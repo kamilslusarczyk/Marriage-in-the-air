@@ -13,24 +13,28 @@ export class TodosListComponent implements OnInit {
     Todos: Todo[] = [];
     FilteredTodos: Todo[] = [];
     searchTodosControl: FormControl;
+    newTodoControl: FormControl;
 
     constructor(private todoService: TodosService, private stringExtensionService: StringExtensionService) {
         this.searchTodosControl = new FormControl("");
+        this.newTodoControl = new FormControl("");
     }
 
     ngOnInit(): void {
-        // let todo = new Todo("Testowy task 2", false, new Date());
-        // this.todoService.add(todo).subscribe(
-        //     data => {
-        //         this.Todos = data.Data;
-        //         this.FilteredTodos = this.Todos;
-        //     },
-        //     err => {
-        //         debugger;
-        //         console.log('Something went wrong!');
-        //     }
-        // );
         this.getTodos();
+    }
+
+    createNewTodo() {
+        var controlValueParsed = String(this.newTodoControl.value);
+        let todo = new Todo(controlValueParsed, false, new Date());
+        this.todoService.add(todo).subscribe(
+            data => {
+                this.getTodos();
+            },
+            err => {
+                console.log('Something went wrong!' + err);
+            }
+        );
     }
 
     searchInputChanged(): void {
@@ -48,5 +52,9 @@ export class TodosListComponent implements OnInit {
                 console.log('Something went wrong!');
             }
         );
+    }
+
+    deletedOrUpdated($event) {
+        this.getTodos();
     }
 }

@@ -27,6 +27,7 @@ import { TodosListComponent } from "./toDo/todo-list.component";
 import { TodoItemComponent } from "./toDo/todo-item.component";
 import { PrimeNgModule } from "./common/primeng.module";
 import { MessageHelperService } from "./common/messageHelper.service";
+import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.component";
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { MessageHelperService } from "./common/messageHelper.service";
         AdminHomeComponent,
         AdminNewsComponent,
         MarriageDetailsComponent,
+        AdminMarriageDetailsComponent,
         StatisticsComponent,
         TodoComponent,
         TodosListComponent,

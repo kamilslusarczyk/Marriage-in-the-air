@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Input } from "@angular/core";
 import { DatePipe } from '@angular/common';
 import { Todo } from "./todo.model";
@@ -24,6 +24,7 @@ export class TodoItemComponent implements OnInit {
             data => {
                 this.messages = this.messageHelper.pushMessage('success', 'You have succesfully updated To Do!', '', this.messages, true)
                 this.inputViolated = false;
+                this.emitEntityStateChange();
             },
             err => {
                 this.messageHelper.pushMessage('error', 'Oh nope', '', this.messages, true)
@@ -35,6 +36,7 @@ export class TodoItemComponent implements OnInit {
             data => {
                 this.messages = this.messageHelper.pushMessage('success', 'You have succesfully deleted To Do!', '', this.messages, true)
                 this.inputViolated = false;
+                this.emitEntityStateChange();
             },
             err => {
                 this.messageHelper.pushMessage('error', 'Oh nope', '', this.messages, true)
@@ -45,8 +47,15 @@ export class TodoItemComponent implements OnInit {
         this.inputViolated = true;
     }
 
+    emitEntityStateChange(){
+        this.deletedOrUpdated.emit(true);
+    }
+
     @Input()
     toDoInstance: Todo;
+
+    @Output()
+    deletedOrUpdated = new EventEmitter<boolean>();
 
     messages: Message[] = [];
     inputViolated = false;

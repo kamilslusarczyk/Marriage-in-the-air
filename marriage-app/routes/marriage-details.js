@@ -12,7 +12,7 @@ var MarriageDetails = require('../models/marriageDetails');
 router.get('/', function (req, res, next) {
     MarriageDetails.find()
         .exec(function (err, docs) {
-            if(err)
+            if (err)
                 return res.status(500).json({
                     Message: "nope.",
                     Data: err
@@ -31,25 +31,29 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
+    MarriageDetails.remove({}, function (err) {
 
-    var details = new MarriageDetails({
-        content: req.body.content,
-        dateOfPublication: req.body.dateOfPublication,
-        latitude: req.body.latitude,
-        longtitude: req.body.longtitude
-    });
-    details.save(function (err, result) {
-        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
-
-        if (error)
+        if (err)
             return error;
 
-        res.status(201).json({
-            Message: "Ok!",
-            Data: true
+        var details = new MarriageDetails({
+            content: req.body.content,
+            dateOfPublication: req.body.dateOfPublication,
+            latitude: req.body.latitude,
+            longtitude: req.body.longtitude
+        });
+        details.save(function (err, result) {
+            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
+
+            if (error)
+                return error;
+
+            res.status(201).json({
+                Message: "Ok!",
+                Data: true
+            });
         });
     });
-
 });
 
 router.use('/', function (req, res, next) {

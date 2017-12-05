@@ -5,6 +5,11 @@
     </form>
 </nav>
 
+<form>
+    <input type="text" pInputText [formControl]="newTodoControl"/>
+    <button pButton (click)="createNewTodo()" type="button" label="Add"></button>
+</form>
+
 <div class="margin-top-20" *ngFor="let todo of FilteredTodos">
-    <todo-item [toDoInstance]="todo"></todo-item>
+    <todo-item (deletedOrUpdated)="deletedOrUpdated($event)" [toDoInstance]="todo"></todo-item>
 </div>
