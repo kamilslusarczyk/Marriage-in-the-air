@@ -28,6 +28,9 @@ import { TodoItemComponent } from "./toDo/todo-item.component";
 import { PrimeNgModule } from "./common/primeng.module";
 import { MessageHelperService } from "./common/messageHelper.service";
 import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.component";
+import { ParticipantsComponent } from "./participants/participants.component";
+import { ParticipantsService } from "./participants/participants.service";
+import { ParticipantItemComponent } from "./participants/participant-item.component";
 
 @NgModule({
     declarations: [
@@ -44,7 +47,9 @@ import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.co
         StatisticsComponent,
         TodoComponent,
         TodosListComponent,
-        TodoItemComponent
+        TodoItemComponent,
+        ParticipantsComponent,
+        ParticipantItemComponent
     ],
     imports: [BrowserModule,
         HttpClientModule,
@@ -55,7 +60,7 @@ import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.co
         NgxChartsModule,
         BrowserAnimationsModule,
         PrimeNgModule],
-    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService, MessageHelperService],
+    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService, MessageHelperService, ParticipantsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

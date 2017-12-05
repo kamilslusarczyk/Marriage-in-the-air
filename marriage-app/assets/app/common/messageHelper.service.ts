@@ -8,7 +8,7 @@ export class MessageHelperService {
         if (shouldClearMessagesArray)
             messagesArray = [];
 
-        messagesArray.push({ severity: 'success', summary: 'You have succesfully updated To Do!', detail: '' });
+        messagesArray.push({ severity: 'success', summary: severity, detail: detail });
 
         return messagesArray;
     }

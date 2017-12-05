@@ -1,44 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var Todo = require('../models/todo');
+var Participants = require('../models/participant');
 var ExceptionService = require('../services/exceptionService');
 var ObjectId = require('mongodb').ObjectID;
 var AuthenticationService = require('../services/authenticationService');
 
-router.post('/', function (req, res, next) {
-
-    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
-    if(!verified)
-        return res.status(401).json({
-            title: "NOT PERMITTED",
-            error: "NOT PERMITTED"
-        });
-
-    var todo = new Todo(req.body);
-    todo.save(function (err, result) {
-        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
-
-        if (error)
-            return error;
-
-        res.status(201).json({
-            Message: "To do saved!",
-            Data: true
-        });
-    });
-
-});
-
 router.get('/', function (req, res, next) {
 
     var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
-    if(!verified)
+    if (!verified)
         return res.status(401).json({
             title: "NOT PERMITTED",
             error: "NOT PERMITTED"
         });
 
-    Todo.find()
+    Participants.find()
         .exec(function (err, docs) {
             var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
 
@@ -52,18 +28,43 @@ router.get('/', function (req, res, next) {
         });
 });
 
-router.put('/', function (req, res, next) {
+//create
+router.post('/', function (req, res, next) {
 
     var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
-    if(!verified)
+    if (!verified)
         return res.status(401).json({
             title: "NOT PERMITTED",
             error: "NOT PERMITTED"
         });
 
-    var todoId = req.body._id;
+    var participant = new Participants(req.body);
+    participant.save(function (err, result) {
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
+
+        if (error)
+            return error;
+
+        res.status(201).json({
+            Message: "To do saved!",
+            Data: true
+        });
+    });
+
+});
+
+//update or delete
+router.put('/', function (req, res, next) {
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if (!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
+    var participantId = req.body._id;
     if (req.body.toDelete) {
-        Todo.findByIdAndRemove({ "_id": ObjectId(todoId) }, function (err) {
+        Participants.findByIdAndRemove({ "_id": ObjectId(participantId) }, function (err) {
 
             res.status(201).json({
                 Message: "Ok!",
@@ -72,12 +73,12 @@ router.put('/', function (req, res, next) {
         });
     }
     else {
-        Todo.update({ "_id": ObjectId(todoId) }, req.body, function (err, todo) {
-            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, todo, res);
-    
+        Participants.update({ "_id": ObjectId(participantId) }, req.body, function (err, participant) {
+            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, participant, res);
+
             if (error)
                 return error;
-    
+
             res.status(201).json({
                 Message: "Ok!",
                 Data: true

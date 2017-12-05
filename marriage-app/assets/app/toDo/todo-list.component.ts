@@ -54,6 +54,7 @@ export class TodosListComponent implements OnInit {
         );
     }
 
+    //this is event emmited by child of this component - todo-item.component
     deletedOrUpdated($event) {
         this.getTodos();
     }

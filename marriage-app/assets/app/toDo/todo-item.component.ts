@@ -6,17 +6,24 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { TodosService } from "./toDo.service";
 import {Message} from 'primeng/components/common/api';
 import { MessageHelperService } from "../common/messageHelper.service";
+import { IAmAbleToShowMessages } from "../common/ableToShowMessages.interface";
 @Component({
     selector: "todo-item",
     templateUrl: './todo-item.component.html',
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent implements IAmAbleToShowMessages  {
+    
+    @Input()
+    toDoInstance: Todo;
+
+    @Output()
+    deletedOrUpdated = new EventEmitter<boolean>();
+
+    messages: Message[] = [];
+    inputViolated = false;
 
     constructor(private todoService: TodosService, private messageHelper: MessageHelperService) {
 
-    }
-
-    ngOnInit(): void {
     }
 
     updateEntity() {
@@ -50,13 +57,4 @@ export class TodoItemComponent implements OnInit {
     emitEntityStateChange(){
         this.deletedOrUpdated.emit(true);
     }
-
-    @Input()
-    toDoInstance: Todo;
-
-    @Output()
-    deletedOrUpdated = new EventEmitter<boolean>();
-
-    messages: Message[] = [];
-    inputViolated = false;
 }

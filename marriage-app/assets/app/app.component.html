@@ -11,7 +11,19 @@
                     <a [routerLink]="['administration/signin']" class="nav-link">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['details']" class="nav-link">Marriage details</a>
+                    <a [routerLink]="['administration/details']" class="nav-link">Marriage details</a>
+                </li>
+                <li *ngIf="isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['administration/todos']" class="nav-link">To do's</a>
+                </li>
+                <li *ngIf="isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['administration/']" class="nav-link">News</a>
+                </li>
+                <li *ngIf="isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['administration/participants']" class="nav-link">Participants</a>
+                </li>
+                <li *ngIf="isLoggedIn()" class="nav-item">
+                    <a [routerLink]="['administration/stats']" class="nav-link">Stats</a>
                 </li>
                 <li *ngIf="isLoggedIn()" class="nav-item">
                     <a (click)="logout()" class="nav-link">Logout</a>

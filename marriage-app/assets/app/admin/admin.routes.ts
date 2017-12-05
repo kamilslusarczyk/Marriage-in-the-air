@@ -4,6 +4,7 @@ import { SignInComponent } from "../auth/signin.component";
 import { StatisticsComponent } from "./admin-stats.component";
 import { TodoComponent } from "../toDo/toDo.component";
 import { AdminMarriageDetailsComponent } from "./admin-marriage-details.component";
+import { ParticipantsComponent } from "../participants/participants.component";
 
 export const ADMIN_ROUTES: Routes= [
     { path:"", redirectTo:"news", pathMatch:"full" },
@@ -12,5 +13,6 @@ export const ADMIN_ROUTES: Routes= [
     { path: "signin", component: SignInComponent},
     { path: "stats", component: StatisticsComponent},
     { path: "todos", component: TodoComponent},
-    { path: "details", component: AdminMarriageDetailsComponent}
+    { path: "details", component: AdminMarriageDetailsComponent},
+    { path: "participants", component: ParticipantsComponent}
 ];

@@ -6,17 +6,8 @@ var AuthenticationService = require('../services/authenticationService');
 var jwt = require('jsonwebtoken');
 var MarriageDetails = require('../models/marriageDetails');
 
-
-
 //get all
 router.get('/', function (req, res, next) {
-    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
-    if(!verified)
-        return res.status(401).json({
-            title: "NOT PERMITTED",
-            error: "NOT PERMITTED"
-        });
-
     MarriageDetails.find()
         .exec(function (err, docs) {
             if (err)
