@@ -7,7 +7,6 @@ import { ResponseBase } from "../common/responseBase";
 import { HttpClient } from "@angular/common/http";
 import { config } from "../common/config";
 import { Array } from "core-js/library/web/timers";
-var _ = require('lodash');
 
 @Injectable()
 export class StatisticsService {
@@ -28,27 +27,8 @@ export class StatisticsService {
         this.checkIfShouldCallApiToSendStatisticsChunk();
     }
 
-    getVisitedUrls(): Array<any> {
-        var result = [];
-
-        this.getStatisticsFromServer().subscribe(
-            data => {
-                let dataGroupedByUrl = _.groupBy(data.Data, stats => stats.url); 
-
-                for(var key in dataGroupedByUrl) {
-                    var value = dataGroupedByUrl[key];
-
-                    result.push({
-                        "name": key,
-                        "value": value.length
-                    })
-                }
-            },
-            err => {
-                result = err;
-            }
-        );
-        return result;
+    getVisitedUrls() {
+        return this.getStatisticsFromServer();
     }
 
     private addEntryToLocalStorage(entry: StatisticEntry) {
@@ -66,28 +46,28 @@ export class StatisticsService {
 
     private checkIfShouldCallApiToSendStatisticsChunk() {
         var existingItems = this.getExistingItemsParsed();
-        if(existingItems.length < this._statisticsChunkThreshold)
+        if (existingItems.length < this._statisticsChunkThreshold)
             return;
-        
+
         this.sendStatisticsToServer(existingItems).subscribe(
-                data => {
-                    this.removeEntryFromLocalStorage();
-                },
-                err => {
-                    console.log('Something went wrong!');
-                }
-            );
+            data => {
+                this.removeEntryFromLocalStorage();
+            },
+            err => {
+                console.log('Something went wrong!');
+            }
+        );
     }
 
-    private getExistingItemsParsed() : Array<StatisticEntry> {
+    private getExistingItemsParsed(): Array<StatisticEntry> {
         return JSON.parse(localStorage.getItem(this._localStorageCode));
     }
 
-    private sendStatisticsToServer(items: Array<StatisticEntry>) : Observable<ResponseBase>{
+    private sendStatisticsToServer(items: Array<StatisticEntry>): Observable<ResponseBase> {
         return this.http.post<ResponseBase>(this._apiPath, items);
     }
 
-    private getStatisticsFromServer() : Observable<ResponseBase> {
+    private getStatisticsFromServer(): Observable<ResponseBase> {
         return this.http.get<ResponseBase>(this._apiPath);
     }
 }
