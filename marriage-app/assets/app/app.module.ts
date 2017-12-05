@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { NewsComponent } from "./news/news.component";
-import { NewsListComponent } from './news/news-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import { NewsListComponent } from "./news/news-list.component";
+import {HttpClientModule} from "@angular/common/http";
 import { NewsItemComponent } from "./news/news-item.component";
 
 import { HeaderComponent } from "./header.component";
@@ -16,6 +16,18 @@ import { AdminNewsComponent } from "./admin/admin-news.component";
 import { AuthService } from "./auth/auth.service";
 import { MarriageDetailsComponent } from "./marriage-details/marriage-details.component";
 import { MarriageDetailsService } from "./marriage-details/marriage-details.service";
+import { StatisticsComponent } from "./admin/admin-stats.component";
+import { StatisticsService } from "./statistics/statistics.service";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TodosService } from "./toDo/toDo.service";
+import { StringExtensionService } from "./common/stringExtensions.service";
+import { TodoComponent } from "./toDo/toDo.component";
+import { TodosListComponent } from "./toDo/todo-list.component";
+import { TodoItemComponent } from "./toDo/todo-item.component";
+import { PrimeNgModule } from "./common/primeng.module";
+import { MessageHelperService } from "./common/messageHelper.service";
+import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.component";
 
 @NgModule({
     declarations: [
@@ -27,10 +39,23 @@ import { MarriageDetailsService } from "./marriage-details/marriage-details.serv
         SignInComponent,
         AdminHomeComponent,
         AdminNewsComponent,
-        MarriageDetailsComponent
+        MarriageDetailsComponent,
+        AdminMarriageDetailsComponent,
+        StatisticsComponent,
+        TodoComponent,
+        TodosListComponent,
+        TodoItemComponent
     ],
-    imports: [BrowserModule, HttpClientModule, FormsModule,  ReactiveFormsModule, HttpModule, routing],
-    providers: [AuthService, MarriageDetailsService],
+    imports: [BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        routing,
+        NgxChartsModule,
+        BrowserAnimationsModule,
+        PrimeNgModule],
+    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService, MessageHelperService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

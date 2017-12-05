@@ -33,3 +33,12 @@ input.ng-invalid.ng-touched {
 .margin-top-20 {
   margin-top: 20px;
 }
+
+.hidden {
+  display: none;
+}
+
+.chart-container {
+  width: 1000px;
+  height: 800px;
+}

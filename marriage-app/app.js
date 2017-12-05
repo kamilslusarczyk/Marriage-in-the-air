@@ -10,6 +10,8 @@ var appRoutes = require('./routes/app');
 var newsRoutes = require('./routes/news');
 var adminRoutes = require('./routes/admin');
 var marriageDetailsRoutes = require('./routes/marriage-details');
+var statisticsRoutes = require('./routes/statistics');
+var todosRoutes = require('./routes/todos');
 // require('./public/stylesheets/styles.less');
 
 var app = express();
@@ -38,11 +40,12 @@ app.use('/', appRoutes);
 app.use('/news', newsRoutes);
 app.use('/admin', adminRoutes);
 app.use('/details', marriageDetailsRoutes);
+app.use('/stats', statisticsRoutes);
+app.use('/todos', todosRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     return res.render('index');
 });
-
 
 module.exports = app;

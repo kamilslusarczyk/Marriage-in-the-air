@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { NewsService } from "./news/news.service";
 import { AuthService } from "./auth/auth.service";
-import { Router } from "@angular/router";
+import { Router, NavigationStart } from "@angular/router";
+import { StatisticsService } from "./statistics/statistics.service";
 
 @Component({
     selector: 'my-app',
@@ -10,8 +11,11 @@ import { Router } from "@angular/router";
 })
 export class AppComponent {
 
-    constructor(private authService: AuthService, private router: Router){
-
+    constructor(private authService: AuthService, private router: Router, private statisticsService: StatisticsService){
+        router.events.subscribe((event) => {
+            if(event instanceof NavigationStart)
+                this.statisticsService.handleRequestForStatistics(event);
+        });
     }
 
     isLoggedIn() {
