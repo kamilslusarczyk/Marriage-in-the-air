@@ -10,6 +10,13 @@ var MarriageDetails = require('../models/marriageDetails');
 
 //get all
 router.get('/', function (req, res, next) {
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     MarriageDetails.find()
         .exec(function (err, docs) {
             if (err)
@@ -30,7 +37,13 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    var decoded = jwt.decode(req.query.token);
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     MarriageDetails.remove({}, function (err) {
 
         if (err)
@@ -55,10 +68,5 @@ router.post('/', function (req, res, next) {
         });
     });
 });
-
-router.use('/', function (req, res, next) {
-    return AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
-});
-
 
 module.exports = router;

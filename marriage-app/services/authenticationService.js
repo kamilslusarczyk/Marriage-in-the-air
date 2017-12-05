@@ -1,15 +1,11 @@
 var jwt = require('jsonwebtoken');
 
-Verify = function(token, nextFn, res) {
-    jwt.verify(token, 'secret', function (err, decoded) {
+Verify = function (token, nextFn, res) {
+    return jwt.verify(token, 'secret', function (err, decoded) {
         if (err) {
-            return res.status(401).json({
-                title: "NOT PERMITTED",
-                error: err
-            });
-
-            nextFn();
+            return false;
         }
+        return true;
     });
 }
 

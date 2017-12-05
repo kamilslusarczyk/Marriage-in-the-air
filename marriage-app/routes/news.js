@@ -5,6 +5,7 @@ var News = require('../models/news');
 var ExceptionService = require('../services/exceptionService')
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
+var AuthenticationService = require('../services/authenticationService');
 
 //get all
 router.get('/', function (req, res, next) {
@@ -40,25 +41,20 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
-router.use('/', function (req, res, next) {
-    jwt.verify(req.query.token, 'secret', function (err, decoded) {
-        if (err) {
-            return res.status(401).json({
-                title: "NOT PERMITTED",
-                error: err
-            });
-
-            next();
-        }
-    });
-});
-
 //create
 router.post('/', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
+
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     User.findById(decoded.user._id, function (err, user) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
-
+        console.log(error);
         if (error)
             return error;
 
@@ -86,6 +82,14 @@ router.post('/', function (req, res, next) {
 
 //delete
 router.put('/', function (req, res, next) {
+    
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     var newsId = req.body._id;
     News.remove({ "_id": ObjectId(newsId) }, function (err, news) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, news, res);

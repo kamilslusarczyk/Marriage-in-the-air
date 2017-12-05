@@ -11,6 +11,8 @@ var _ = require('lodash');
 })
 export class StatisticsComponent implements OnInit {
       
+    chartData: any;
+    
     constructor(private statisticsService: StatisticsService) {
 
     }
@@ -47,9 +49,5 @@ export class StatisticsComponent implements OnInit {
                 result = err;
             }
         );
-
-        console.log(this.chartData);
     }
-
-    chartData: any;
 }

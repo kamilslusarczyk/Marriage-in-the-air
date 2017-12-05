@@ -5,6 +5,14 @@ var ExceptionService = require('../services/exceptionService');
 var ObjectId = require('mongodb').ObjectID;
 
 router.post('/', function (req, res, next) {
+
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     var todo = new Todo(req.body);
     todo.save(function (err, result) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
@@ -21,6 +29,14 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/', function (req, res, next) {
+
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     Todo.find()
         .exec(function (err, docs) {
             var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
@@ -36,6 +52,14 @@ router.get('/', function (req, res, next) {
 });
 
 router.put('/', function (req, res, next) {
+
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     var todoId = req.body._id;
     if (req.body.toDelete) {
         Todo.findByIdAndRemove({ "_id": ObjectId(todoId) }, function (err) {
