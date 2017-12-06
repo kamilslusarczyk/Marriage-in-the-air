@@ -3,6 +3,7 @@ import { FormControl } from "@angular/forms";
 import { OnInit } from "@angular/core";
 import { News } from "./news.model"
 import { NewsService } from "./news.service";
+import { StringExtensionService } from "../common/stringExtensions.service";
 
 @Component({
     selector: "news-list",
@@ -14,13 +15,14 @@ export class NewsListComponent implements OnInit {
     FilteredNewses: News[] = [];
     searchNewsesControl: FormControl;
 
-    constructor(private newsService: NewsService) {
+    constructor(private newsService: NewsService, private stringExtensionService: StringExtensionService) {
         this.searchNewsesControl = new FormControl("");
     }
 
     searchInputChanged(): void {
         var controlValueParsed = String(this.searchNewsesControl.value);
-        this.FilteredNewses = this.Newses.filter(x => x.content.toLowerCase().includes(controlValueParsed.toLowerCase()));
+        this.FilteredNewses = this.stringExtensionService.filterByContent(this.Newses, controlValueParsed);
+        // this.FilteredNewses = this.Newses.filter(x => x.content.toLowerCase().includes(controlValueParsed.toLowerCase()));
     }
 
     ngOnInit(): void {

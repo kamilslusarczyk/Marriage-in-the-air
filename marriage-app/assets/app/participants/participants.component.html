@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light internal-nav">
+    <form class="form-inline" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search participants" aria-label="Search" [formControl]="searchParticipantsControl" (keyup)="searchInputChanged()">
+    </form>
+</nav>
+
+<form>
+    <input type="text" pInputText [formControl]="participantNameControl"/>
+    <button pButton (click)="createNewParticipant()" type="button" label="Add"></button>
+</form>
+
+<div class="margin-top-20" *ngFor="let participant of FilteredParticipants">
+    <participant-item (deletedOrUpdated)="deletedOrUpdated($event)" [participantInstance]="participant"></participant-item>
+</div>

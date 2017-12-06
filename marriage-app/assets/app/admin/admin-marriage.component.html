@@ -1,0 +1,16 @@
+<form>
+    <label>Something about your marriage party!</label>
+    <div>
+        <input type="text" pInputText [formControl]="content" />
+    </div>
+    <label>Restaurant coordinates</label>
+    <div>
+        <label>Longtitude</label>
+        <input type="text" placeholder="Longtitude" [formControl]="longtitude" pInputText />
+    </div>
+    <div>
+        <label>Latitude</label>
+        <input type="text" placeholder="Latitude" [formControl]="latitude" pInputText />
+    </div>
+    <button pButton type="submit" (click)="onSubmit()" label="Click"></button>
+</form>

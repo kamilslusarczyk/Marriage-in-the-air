@@ -3,13 +3,20 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
 var News = require('../models/news');
 var ExceptionService = require('../services/exceptionService')
+var jwt = require('jsonwebtoken');
+var User = require('../models/user');
+var AuthenticationService = require('../services/authenticationService');
 
 //get all
 router.get('/', function (req, res, next) {
     News.find()
+        .populate('user', 'firstName')
         .exec(function (err, docs) {
-            ExceptionService.MongoosHelper.HandleRequest(err, null, docs);
-            
+            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
+
+            if (error)
+                return error;
+
             res.status(200).json({
                 Message: "Newses retreived properly.",
                 Data: docs
@@ -22,7 +29,10 @@ router.get('/:id', function (req, res, next) {
     var newsId = req.params.id;
 
     News.findById({ "_id": ObjectId(newsId) }, function (err, news) {
-        ExceptionService.MongoosHelper.HandleRequest(err, null, news);
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, news, res);
+
+        if (error)
+            return error;
 
         res.status(200).json({
             Message: "News retreived properly.",
@@ -33,24 +43,59 @@ router.get('/:id', function (req, res, next) {
 
 //create
 router.post('/', function (req, res, next) {
-    var news = new News({
-        content: req.body.content
-    });
-    news.save(function (err, result) {
-        ExceptionService.MongoosHelper.HandleRequest(err, null, result);
+    var decoded = jwt.decode(req.query.token);
 
-        res.status(201).json({
-            Message: "Ok!",
-            Data: true
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
         });
-    });
+
+    User.findById(decoded.user._id, function (err, user) {
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
+        console.log(error);
+        if (error)
+            return error;
+
+        var news = new News({
+            content: req.body.content,
+            user: user
+        });
+        news.save(function (err, result) {
+            var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
+
+            if (error)
+                return error;
+
+            user.newses.push(result);
+            user.save();
+
+            res.status(201).json({
+                Message: "Ok!",
+                Data: true
+            });
+        });
+    })
+
 });
 
 //delete
 router.put('/', function (req, res, next) {
+    
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
     var newsId = req.body._id;
-    News.remove({ "_id": ObjectId(newsId) }, function (err, message) {
-        ExceptionService.MongoosHelper.HandleRequest(err, null, message);
+    News.remove({ "_id": ObjectId(newsId) }, function (err, news) {
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, news, res);
+
+        if (error)
+            return error;
 
         res.status(201).json({
             Message: "Ok!",
