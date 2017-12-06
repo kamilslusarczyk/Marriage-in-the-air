@@ -6,6 +6,8 @@ import { FormControl } from "@angular/forms";
 import { StringExtensionService } from "../common/stringExtensions.service";
 import { ParticipantsService } from "./participants.service";
 import { Participant } from "./participant.model";
+import { MessageHelperService } from "../common/messageHelper.service";
+import { SeverityEnum } from "../common/messageSeverity.enum";
 
 @Component({
     selector: "participants",
@@ -20,7 +22,7 @@ export class ParticipantsComponent implements OnInit, IAmAbleToShowMessages {
 
     participantNameControl: FormControl;
 
-    constructor(private stringExtensionService: StringExtensionService, private participantsService: ParticipantsService) {
+    constructor(private stringExtensionService: StringExtensionService, private participantsService: ParticipantsService, private messageHelper: MessageHelperService) {
         this.searchParticipantsControl = new FormControl("");
         this.participantNameControl = new FormControl("");
     }
@@ -47,6 +49,7 @@ export class ParticipantsComponent implements OnInit, IAmAbleToShowMessages {
         this.participantsService.add(participant).subscribe(
             data => {
                 this.getParticipants();
+                this.messageHelper.addSingleMessage(SeverityEnum.Success, "Creation of participant completed", "");
             },
             err => {
                 console.log('Something went wrong!');

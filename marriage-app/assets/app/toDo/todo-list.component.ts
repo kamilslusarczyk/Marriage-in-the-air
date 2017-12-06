@@ -3,6 +3,8 @@ import { TodosService } from "./toDo.service";
 import { FormControl } from "@angular/forms";
 import { Todo } from "./todo.model";
 import { StringExtensionService } from "../common/stringExtensions.service";
+import { SeverityEnum } from "../common/messageSeverity.enum";
+import { MessageHelperService } from "../common/messageHelper.service";
 
 @Component({
     selector: "todos-list",
@@ -15,7 +17,7 @@ export class TodosListComponent implements OnInit {
     searchTodosControl: FormControl;
     newTodoControl: FormControl;
 
-    constructor(private todoService: TodosService, private stringExtensionService: StringExtensionService) {
+    constructor(private todoService: TodosService, private stringExtensionService: StringExtensionService, private messageHelper: MessageHelperService) {
         this.searchTodosControl = new FormControl("");
         this.newTodoControl = new FormControl("");
     }
@@ -30,6 +32,7 @@ export class TodosListComponent implements OnInit {
         this.todoService.add(todo).subscribe(
             data => {
                 this.getTodos();
+                this.messageHelper.addSingleMessage(SeverityEnum.Success, "Creation of Todo completed", "");
             },
             err => {
                 console.log('Something went wrong!' + err);
