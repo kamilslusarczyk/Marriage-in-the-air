@@ -5,6 +5,8 @@ import { MarriageDetails } from "../marriage-details/marriageDetails.model";
 import { MessageHelperService } from "../common/messageHelper.service";
 import { Message } from 'primeng/components/common/api';
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
+import { SeverityEnum } from "../common/messageSeverity.enum";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "admin-marriage",
@@ -17,7 +19,7 @@ export class AdminMarriageDetailsComponent implements OnInit {
     longtitude: FormControl;
     messages: Message[] = [];
 
-    constructor(private marriageService: MarriageDetailsService, private messageHelper: MessageHelperService) {
+    constructor(private marriageService: MarriageDetailsService, private messageHelper: MessageHelperService, private router: Router) {
         this.content = new FormControl("");
         this.latitude = new FormControl("");
         this.longtitude = new FormControl("");
@@ -45,10 +47,10 @@ export class AdminMarriageDetailsComponent implements OnInit {
 
         this.marriageService.addMarriageDetails(marriageDetails).subscribe(
             data => {
-                this.messages = this.messageHelper.pushMessage('success', 'You have succesfully deleted To Do!', '', this.messages, true)
+                this.messageHelper.addSingleMessage(SeverityEnum.Success, "Update of details completed", "");
             },
             err => {
-                this.messageHelper.pushMessage('error', 'Oh nope', '', this.messages, true)
+                this.messageHelper.addSingleMessage(SeverityEnum.Error, "Oh nope!", "");
             });
     }
 }

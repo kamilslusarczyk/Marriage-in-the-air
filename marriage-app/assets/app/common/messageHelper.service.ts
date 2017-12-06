@@ -1,15 +1,26 @@
 import { Injectable } from "@angular/core";
 import { Message } from "primeng/components/common/message";
+import { MessageService } from "primeng/components/common/messageservice";
+import { SeverityEnum } from "./messageSeverity.enum";
 
 @Injectable()
 export class MessageHelperService {
-    //todo - replace severity with enum
-    pushMessage(severity: string, summary: string, detail: string, messagesArray: any[], shouldClearMessagesArray: boolean) : Message[] {
-        if (shouldClearMessagesArray)
-            messagesArray = [];
 
-        messagesArray.push({ severity: 'success', summary: 'You have succesfully updated To Do!', detail: '' });
+    constructor(private messageService: MessageService) {
 
-        return messagesArray;
+    }
+
+    addSingleMessage(severity: SeverityEnum, summary: string, detail: string) {
+        this.messageService.add({ severity: severity, summary: summary, detail: detail });
+    }
+
+    addMultipleMessages() {
+        //from documentation - need to rebuild that
+        this.messageService.addAll([{ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' },
+        { severity: 'info', summary: 'Info Message', detail: 'Via MessageService' }]);
+    }
+
+    clearMessages() {
+        this.messageService.clear();
     }
 }

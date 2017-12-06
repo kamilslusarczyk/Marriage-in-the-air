@@ -1,0 +1,8 @@
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">This is sample participant layout</h4>
+    <textarea (input)="controlValueChanged()" pInputTextarea [(ngModel)]="participantInstance.name"></textarea>
+    <div *ngIf="inputViolated">
+        <button (click)="updateEntity()" pButton type="button" label="Save"></button>
+    </div>
+    <button pButton (click)="deleteEntity()" type="button" label="Delete"></button>
+</div>
