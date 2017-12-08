@@ -6,18 +6,17 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { NewsComponent } from "./news/news.component";
 import { NewsListComponent } from "./news/news-list.component";
-import {HttpClientModule} from "@angular/common/http";
 import { NewsItemComponent } from "./news/news-item.component";
 
 import { HeaderComponent } from "./header.component";
 import { routing } from "./app.routing";
 import { SignInComponent } from "./auth/signin.component";
-import { AdminHomeComponent } from "./admin/admin-home.component";
-import { AdminNewsComponent } from "./admin/admin-news.component";
+import { AdminHomeComponent } from "./admin/home/admin-home.component";
+import { AdminNewsComponent } from "./admin/news/admin-news.component";
 import { AuthService } from "./auth/auth.service";
 import { MarriageDetailsComponent } from "./marriage-details/marriage-details.component";
 import { MarriageDetailsService } from "./marriage-details/marriage-details.service";
-import { StatisticsComponent } from "./admin/admin-stats.component";
+import { StatisticsComponent } from "./admin/stats/admin-stats.component";
 import { StatisticsService } from "./statistics/statistics.service";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -33,6 +32,7 @@ import { ParticipantsComponent } from "./participants/participants.component";
 import { ParticipantsService } from "./participants/participants.service";
 import { ParticipantItemComponent } from "./participants/participant-item.component";
 import { MessageService } from "primeng/components/common/messageservice";
+import { AdminGalleryComponent } from "./admin/message/admin-gallery.component";
 
 @NgModule({
     declarations: [
@@ -51,7 +51,8 @@ import { MessageService } from "primeng/components/common/messageservice";
         TodosListComponent,
         TodoItemComponent,
         ParticipantsComponent,
-        ParticipantItemComponent
+        ParticipantItemComponent,
+        AdminGalleryComponent
     ],
     imports: [BrowserModule,
         HttpClientModule,
@@ -62,7 +63,14 @@ import { MessageService } from "primeng/components/common/messageservice";
         NgxChartsModule,
         BrowserAnimationsModule,
         PrimeNgModule],
-    providers: [AuthService, MarriageDetailsService, StatisticsService, TodosService, StringExtensionService, MessageHelperService, ParticipantsService, MessageService],
+    providers: [AuthService,
+        MarriageDetailsService,
+        StatisticsService,
+        TodosService,
+        StringExtensionService,
+         MessageHelperService,
+         ParticipantsService,
+         MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

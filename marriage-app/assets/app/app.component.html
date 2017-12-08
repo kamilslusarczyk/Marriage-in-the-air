@@ -8,22 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li *ngIf="!isLoggedIn()" class="nav-item">
-                    <a [routerLink]="['administration/signin']" class="nav-link">Sign in</a>
+                    <a [routerLink]="['/administration/signin']" class="nav-link">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['administration/details']" class="nav-link">Marriage details</a>
+                    <a [routerLink]="['/details']" class="nav-link">Marriage details</a>
                 </li>
                 <li *ngIf="isLoggedIn()" class="nav-item">
-                    <a [routerLink]="['administration/todos']" class="nav-link">To do's</a>
+                    <a [routerLink]="['']" class="nav-link">News</a>
                 </li>
                 <li *ngIf="isLoggedIn()" class="nav-item">
-                    <a [routerLink]="['administration/']" class="nav-link">News</a>
-                </li>
-                <li *ngIf="isLoggedIn()" class="nav-item">
-                    <a [routerLink]="['administration/participants']" class="nav-link">Participants</a>
-                </li>
-                <li *ngIf="isLoggedIn()" class="nav-item">
-                    <a [routerLink]="['administration/stats']" class="nav-link">Stats</a>
+                    <a [routerLink]="['/administration']" class="nav-link">Administration</a>
                 </li>
                 <li *ngIf="isLoggedIn()" class="nav-item">
                     <a (click)="logout()" class="nav-link">Logout</a>

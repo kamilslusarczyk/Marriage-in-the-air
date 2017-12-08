@@ -18,8 +18,9 @@ router.post("/dummyCreate", function (req, res, next) {
 
     user.save(function (err, result) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
-
+        
         if (error)
+            console.log(error);
             return error;
 
         res.status(200).json({
