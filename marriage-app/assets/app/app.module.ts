@@ -32,7 +32,7 @@ import { ParticipantsComponent } from "./participants/participants.component";
 import { ParticipantsService } from "./participants/participants.service";
 import { ParticipantItemComponent } from "./participants/participant-item.component";
 import { MessageService } from "primeng/components/common/messageservice";
-import { AdminGalleryComponent } from "./admin/message/admin-gallery.component";
+import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
 
 @NgModule({
     declarations: [
