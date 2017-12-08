@@ -1,3 +1,4 @@
+import { AdminNewsAddComponent } from './admin/news/admin-news-add.component';
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -52,7 +53,9 @@ import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
         TodoItemComponent,
         ParticipantsComponent,
         ParticipantItemComponent,
-        AdminGalleryComponent
+        AdminGalleryComponent,
+        AdminNewsAddComponent
+
     ],
     imports: [BrowserModule,
         HttpClientModule,

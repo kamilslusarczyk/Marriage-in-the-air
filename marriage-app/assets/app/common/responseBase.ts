@@ -4,3 +4,10 @@ export class ResponseBase {
     token: any;
     userId: any;
 }
+
+export class ResponseBaseGeneric<T> {
+    Data: T;
+    Message: string;
+    token: string;
+    userId: number;
+}

@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
-import { StatisticsService } from "../statistics/statistics.service";
+import { StatisticsService } from "../../statistics/statistics.service";
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
-import {single, multi} from './data';
 var _ = require('lodash');
 
 @Component({
@@ -18,7 +17,7 @@ export class StatisticsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        var result = {
+        let result : any = {
             labels: [],
             values: []
         };

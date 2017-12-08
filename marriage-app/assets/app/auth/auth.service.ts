@@ -32,6 +32,10 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
+    getUserId(){
+        return this.isLoggedIn() ? localStorage.getItem("userId") : null;
+    }
+
     //this is for route creation to call API in Node.js
     getToken(){
         return localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';

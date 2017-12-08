@@ -6,11 +6,13 @@ import { TodoComponent } from "../toDo/toDo.component";
 import { AdminMarriageDetailsComponent } from "./admin-marriage-details.component";
 import { ParticipantsComponent } from "../participants/participants.component";
 import { AdminGalleryComponent } from "./gallery/admin-gallery.component";
+import { AdminNewsAddComponent } from "./news/admin-news-add.component";
 
 export const ADMIN_ROUTES: Routes= [
     { path:"", redirectTo:"news", pathMatch:"full" },
-    { path: "news", component: AdminNewsComponent, children: ADMIN_NEWS_ROUTES},
-    { path: "gallery", component: AdminGalleryComponent, children: ADMIN_GALLERY_ROUTES},
+    { path: "news", component: AdminNewsComponent},
+    { path: "news/add", component: AdminNewsAddComponent},
+    { path: "gallery", component: AdminGalleryComponent},
     { path: "createDummy", component: SignInComponent },
     { path: "signin", component: SignInComponent},
     { path: "stats", component: StatisticsComponent},
@@ -19,14 +21,4 @@ export const ADMIN_ROUTES: Routes= [
     { path: "participants", component: ParticipantsComponent}
 ];
 
-const ADMIN_NEWS_ROUTES : Routes =
-[
-    {path:"add", component:AdminNewsComponent},
-    {path:"edit", component:AdminNewsComponent},
-];
 
-const ADMIN_GALLERY_ROUTES : Routes = [
-    {path:"add", component:AdminNewsComponent},
-    {path:"add-group", component:AdminNewsComponent},
-    {path:"edit", component:AdminNewsComponent},
-];

@@ -6,8 +6,9 @@ import { CheckboxModule,
         ButtonModule,
         InputTextModule,
         ChartModule,
-        PanelMenuModule } from "primeng/primeng";
-import {GrowlModule} from "primeng/primeng";
+        PanelMenuModule,
+        EditorModule,
+        GrowlModule } from "primeng/primeng";
 
 @NgModule({
  exports:[CheckboxModule,
@@ -18,7 +19,8 @@ import {GrowlModule} from "primeng/primeng";
         ButtonModule,
         InputTextModule,
         ChartModule,
-        PanelMenuModule]
+        PanelMenuModule,
+        EditorModule]
 })
 export class PrimeNgModule {
 
