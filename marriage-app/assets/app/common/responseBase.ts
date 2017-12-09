@@ -3,6 +3,7 @@ export class ResponseBase {
     Message: string;
     token: any;
     userId: any;
+    success: boolean;
 }
 
 export class ResponseBaseGeneric<T> {
@@ -10,4 +11,5 @@ export class ResponseBaseGeneric<T> {
     Message: string;
     token: string;
     userId: number;
+    success: boolean;
 }

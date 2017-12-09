@@ -34,6 +34,7 @@ import { ParticipantsService } from "./participants/participants.service";
 import { ParticipantItemComponent } from "./participants/participant-item.component";
 import { MessageService } from "primeng/components/common/messageservice";
 import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -73,7 +74,8 @@ import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
         StringExtensionService,
          MessageHelperService,
          ParticipantsService,
-         MessageService],
+         MessageService,
+         DatePipe],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -8,7 +8,10 @@ import { CheckboxModule,
         ChartModule,
         PanelMenuModule,
         EditorModule,
-        GrowlModule } from "primeng/primeng";
+        GrowlModule,
+        FieldsetModule,
+        ConfirmDialogModule,
+        ConfirmationService } from "primeng/primeng";
 
 @NgModule({
  exports:[CheckboxModule,
@@ -20,7 +23,12 @@ import { CheckboxModule,
         InputTextModule,
         ChartModule,
         PanelMenuModule,
-        EditorModule]
+        EditorModule,
+        FieldsetModule,
+        ConfirmDialogModule],
+providers:[
+        ConfirmationService
+        ]
 })
 export class PrimeNgModule {
 

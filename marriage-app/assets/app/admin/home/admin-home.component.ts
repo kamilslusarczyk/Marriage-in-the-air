@@ -33,7 +33,7 @@ export class AdminHomeComponent implements OnInit {
         },
         {
             label : "Statystyki",
-            icon : "bar-chart-o",
+            icon : "fa-bar-chart-o",
             routerLink : ["stats"],
             items: [{
                 label: "xyz",

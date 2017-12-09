@@ -21,7 +21,7 @@ export class NewsService {
     }
 
     getNewsesGeneric<T>(): Observable<ResponseBaseGeneric<T>> {
-        return this.http.get<ResponseBaseGeneric<T>>(this.apiPath);
+        return <Observable<ResponseBaseGeneric<T>>>this.getNewses();
     }
 
     getNews(id: string) : Observable<ResponseBase> {
@@ -42,5 +42,9 @@ export class NewsService {
     deleteNews(news: News): Observable<ResponseBase> {
         const token = this.authService.getToken();
         return this.http.put<ResponseBase>(this.apiPath + token, news);
+    }
+
+    deleteNewsGeneric<T>(news: News): Observable<ResponseBaseGeneric<T>> {
+        return <Observable<ResponseBaseGeneric<T>>>this.deleteNews(news);
     }
 }
