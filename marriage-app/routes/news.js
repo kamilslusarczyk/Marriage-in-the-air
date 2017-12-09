@@ -54,11 +54,12 @@ router.post('/', function (req, res, next) {
 
     User.findById(decoded.user._id, function (err, user) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
-        console.log(error);
+        console.log(error,"adsadssa");
         if (error)
             return error;
 
         var news = new News({
+            topic : req.body.topic,
             content: req.body.content,
             user: user
         });

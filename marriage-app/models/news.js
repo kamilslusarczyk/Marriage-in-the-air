@@ -3,6 +3,10 @@ var Schema = mongoose.Schema;
 var User = require('../models/user');
 
 var schema = new Schema({
+    topic: {
+        type: String,
+        required: true
+    },
     content: {
         type: String,
         required: true

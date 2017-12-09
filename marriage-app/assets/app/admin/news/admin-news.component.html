@@ -1,2 +1,6 @@
-i am news component
-here will be list of news, someday...
+
+<div class="jumbotron" *ngFor="let news of newses">
+    <h3 style="display:inline">{{news.topic}}</h3><span style="float:right">{{news.dateOfPublication}}</span>
+    <br>
+    <p>{{news.content}}</p>
+</div>
