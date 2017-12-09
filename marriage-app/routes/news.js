@@ -61,7 +61,8 @@ router.post('/', function (req, res, next) {
         var news = new News({
             topic : req.body.topic,
             content: req.body.content,
-            user: user
+            user: user,
+            isArchived : false
         });
         news.save(function (err, result) {
             var error = ExceptionService.MongoosHelper.HandleRequest(err, null, result, res);
@@ -82,8 +83,8 @@ router.post('/', function (req, res, next) {
 });
 
 //delete
-router.put('/', function (req, res, next) {
-    
+router.delete('/:id', function (req, res, next) {
+
     var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
     if(!verified)
         return res.status(401).json({
@@ -91,7 +92,7 @@ router.put('/', function (req, res, next) {
             error: "NOT PERMITTED"
         });
 
-    var newsId = req.body._id;
+    var newsId = req.params._id;
     News.remove({ "_id": ObjectId(newsId) }, function (err, news) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, news, res);
 

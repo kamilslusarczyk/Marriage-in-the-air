@@ -1,14 +1,12 @@
 <form [formGroup]="addNewsFormGroup" (ngSubmit)="addNews()">
-    <div class="ui-float-label">
-            <input pInputText type="text" formControlName="topic"/>
-            <label>Temat</label>
-    </div>
-  <br>
-  <div>
-    <textarea pInputText formControlName="content" style="width:300px;height:200px">
-    </textarea>
+  <div class="form-group">
+      <input type="text" class="form-control" formControlName="topic" placeholder="Temat"/>
 
   </div>
-
-    <button type="submit">Wyślij</button>
+  <div class="form-group">
+      <textarea formControlName="content" class="form-control" placeholder="Treść" rows="15" style="overflow-y:hidden">
+      </textarea>
+  </div>
+    <button class="btn btn-primary float-right" type="submit">Wyślij</button>
 </form>
+

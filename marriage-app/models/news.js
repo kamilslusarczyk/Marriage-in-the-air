@@ -11,6 +11,10 @@ var schema = new Schema({
         type: String,
         required: true
     },
+    isArchived: {
+        type: Boolean,
+        required: true
+    },
     dateOfPublication: {
         type: Date,
         default: Date.now,

@@ -40,11 +40,14 @@ export class NewsService {
     }
 
     deleteNews(news: News): Observable<ResponseBase> {
+        debugger;
         const token = this.authService.getToken();
-        return this.http.put<ResponseBase>(this.apiPath + token, news);
+        return this.http.delete<ResponseBase>(this.apiPath +"/"+news["_id"] + token);
     }
 
     deleteNewsGeneric<T>(news: News): Observable<ResponseBaseGeneric<T>> {
         return <Observable<ResponseBaseGeneric<T>>>this.deleteNews(news);
     }
+
+
 }

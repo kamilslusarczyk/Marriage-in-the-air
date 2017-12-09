@@ -1,13 +1,11 @@
-
-<ng-container *ngFor="let news of newses">
-    <p-fieldset>
-        <p-header>{{news.topic}} - {{news.dateOfPublication  | date:'mediumDate' }}
-             <i class="fa fa-trash-o float-right ml-2" aria-hidden="true" (click)="removeNews(news)"></i> 
-             <i class="fa fa-pencil-square-o float-right" aria-hidden="true" (click)="editNews(news)"></i>
-             <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
-            </p-header>
-        {{news.content}}
-       
-    </p-fieldset>
-    <br/>
-</ng-container>
+<div class="card mb-2" *ngFor="let news of newses">
+    <div class="card-header">
+            {{news.topic}} - {{news.dateOfPublication  | date:'mediumDate' }}. Autor: {{news.user.firstName}}
+            <i class="fa fa-trash-o float-right ml-2" aria-hidden="true" (click)="removeNews(news)" pTooltip="Usuń"></i> 
+            <i class="fa fa-pencil-square-o float-right ml-2" aria-hidden="true" (click)="editNews(news)" pTooltip="Edytuj"></i>
+            <i class="fa fa-archive float-right ml-2" aria-hidden="true" (click)="archive(news)" pTooltip="Archiwizuj"></i>
+    </div>
+    <div class="card-body">
+       {{news.content}}
+    </div>
+</div>

@@ -34,7 +34,8 @@ import { ParticipantsService } from "./participants/participants.service";
 import { ParticipantItemComponent } from "./participants/participant-item.component";
 import { MessageService } from "primeng/components/common/messageservice";
 import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
-import { DatePipe } from "@angular/common";
+import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } from './admin/news/admin-news-archive.component';
+;
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { DatePipe } from "@angular/common";
         ParticipantsComponent,
         ParticipantItemComponent,
         AdminGalleryComponent,
-        AdminNewsAddComponent
+        AdminNewsAddComponent,
+        AdminNewsArchiveComponent
 
     ],
     imports: [BrowserModule,

@@ -22,6 +22,8 @@
     "@angular/upgrade": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "@swimlane/ngx-charts": "^7.0.1",
+    "@types/lodash": "^4.14.88",
+    "angular-froala-wysiwyg": "^2.7.2-1",
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.15.2",
     "bootstrap": "^4.0.0-alpha.6",

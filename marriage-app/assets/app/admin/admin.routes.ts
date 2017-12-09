@@ -7,11 +7,13 @@ import { AdminMarriageDetailsComponent } from "./admin-marriage-details.componen
 import { ParticipantsComponent } from "../participants/participants.component";
 import { AdminGalleryComponent } from "./gallery/admin-gallery.component";
 import { AdminNewsAddComponent } from "./news/admin-news-add.component";
+import { AdminNewsArchiveComponent } from "./news/admin-news-archive.component";
 
 export const ADMIN_ROUTES: Routes= [
     { path:"", redirectTo:"news", pathMatch:"full" },
     { path: "news", component: AdminNewsComponent},
     { path: "news/add", component: AdminNewsAddComponent},
+    { path: "news/archive", component: AdminNewsArchiveComponent},
     { path: "gallery", component: AdminGalleryComponent},
     { path: "createDummy", component: SignInComponent },
     { path: "signin", component: SignInComponent},

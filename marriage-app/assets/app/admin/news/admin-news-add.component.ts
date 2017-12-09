@@ -12,6 +12,7 @@ import { SeverityEnum } from '../../common/messageSeverity.enum';
 })
 export class AdminNewsAddComponent{
     private addNewsFormGroup : FormGroup;
+    private ckeditorContent : any;
 
     constructor(private newsService : NewsService,
         private authService : AuthService,
@@ -22,6 +23,9 @@ export class AdminNewsAddComponent{
             "topic" : new FormControl("",[Validators.required]),
             "content" : new FormControl("",[Validators.required])
         });
+
+        this.ckeditorContent = "sassa";
+
         
         
     }

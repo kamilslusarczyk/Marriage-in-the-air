@@ -5,10 +5,11 @@ import { NewsService } from '../../news/news.service';
 import { ConfirmationService } from "primeng/primeng";
 import { MessageHelperService } from '../../common/messageHelper.service';
 import { SeverityEnum } from '../../common/messageSeverity.enum';
+var _ = require('lodash');
 
 @Component({
     selector:"admin-news",
-    styleUrls:[],
+    styleUrls:["./admin-news.component.css"],
     templateUrl: "./admin-news.component.html"
 })
 export class AdminNewsComponent implements OnInit {
@@ -32,13 +33,14 @@ export class AdminNewsComponent implements OnInit {
 
 private removeNews(news : News){
     console.log(news);
-    debugger;
+
     this.confirmationService.confirm({message:"Czy jesteś pewien?",
     accept:()=>{
         this.newsService.deleteNewsGeneric(news)
         .subscribe(x=>{
             if(x.success){
                this.messageHelperService.addSingleMessage(SeverityEnum.Success,"Usunięto!",""); 
+               _.remove(this.newses,y=>(<News>y) == news);
             }
         })
     }})
