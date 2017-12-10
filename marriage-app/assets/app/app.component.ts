@@ -11,11 +11,27 @@ import { StatisticsService } from "./statistics/statistics.service";
 })
 export class AppComponent {
 
+    private tabMenuItems : [any];
+
     constructor(private authService: AuthService, private router: Router, private statisticsService: StatisticsService){
         router.events.subscribe((event) => {
             if(event instanceof NavigationStart)
                 this.statisticsService.handleRequestForStatistics(event);
         });
+
+        this.tabMenuItems = [{
+            label : "Strona główna",
+            icon: "fa-home",
+            routerLink:[""]
+        },{
+            label:"Newsy",
+            icon: "fa-newspaper-o",
+            routerLink:["/news"]
+        },{
+            label : "Panel administratora",
+            icon:"fa-lock",
+            routerLink:["/administration"]
+        }];
     }
 
     isLoggedIn() {

@@ -36,6 +36,7 @@ import { MessageService } from "primeng/components/common/messageservice";
 import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
 import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } from './admin/news/admin-news-archive.component';
 import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
+import { HomepageComponent } from './homepage/homepage.component';
 ;
 
 @NgModule({
@@ -59,7 +60,8 @@ import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
         AdminGalleryComponent,
         AdminNewsAddComponent,
         AdminNewsArchiveComponent,
-        AdminWelcomeComponent
+        AdminWelcomeComponent,
+        HomepageComponent
 
     ],
     imports: [BrowserModule,

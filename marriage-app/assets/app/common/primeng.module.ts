@@ -12,7 +12,8 @@ import { CheckboxModule,
         FieldsetModule,
         ConfirmDialogModule,
         ConfirmationService,
-        TooltipModule } from "primeng/primeng";
+        TooltipModule,
+        TabMenuModule } from "primeng/primeng";
 
 @NgModule({
  exports:[CheckboxModule,
@@ -27,7 +28,8 @@ import { CheckboxModule,
         EditorModule,
         FieldsetModule,
         ConfirmDialogModule,
-        TooltipModule],
+        TooltipModule,
+        TabMenuModule],
 providers:[
         ConfirmationService
         ]
