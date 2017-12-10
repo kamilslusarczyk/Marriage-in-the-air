@@ -6,10 +6,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { NewsComponent } from "./news/news.component";
-import { NewsListComponent } from "./news/news-list.component";
-import { NewsItemComponent } from "./news/news-item.component";
-
-import { HeaderComponent } from "./header.component";
 import { routing } from "./app.routing";
 import { SignInComponent } from "./auth/signin.component";
 import { AdminHomeComponent } from "./admin/home/admin-home.component";
@@ -37,15 +33,12 @@ import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
 import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } from './admin/news/admin-news-archive.component';
 import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
 import { HomepageComponent } from './homepage/homepage.component';
-;
+
 
 @NgModule({
     declarations: [
         AppComponent,
         NewsComponent,
-        NewsListComponent,
-        NewsItemComponent,
-        HeaderComponent,
         SignInComponent,
         AdminHomeComponent,
         AdminNewsComponent,

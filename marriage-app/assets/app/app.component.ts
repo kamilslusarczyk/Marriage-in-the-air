@@ -3,6 +3,7 @@ import { NewsService } from "./news/news.service";
 import { AuthService } from "./auth/auth.service";
 import { Router, NavigationStart } from "@angular/router";
 import { StatisticsService } from "./statistics/statistics.service";
+import { MenuItem } from "primeng/primeng";
 
 @Component({
     selector: 'my-app',
@@ -12,6 +13,7 @@ import { StatisticsService } from "./statistics/statistics.service";
 export class AppComponent {
 
     private tabMenuItems : [any];
+    private activeItem : MenuItem;
 
     constructor(private authService: AuthService, private router: Router, private statisticsService: StatisticsService){
         router.events.subscribe((event) => {
@@ -31,7 +33,20 @@ export class AppComponent {
             label : "Panel administratora",
             icon:"fa-lock",
             routerLink:["/administration"]
+        },{
+            label : "Tymczasowe logowanie",
+            icon:"fa-lock",
+            routerLink:["/signin"]
+        },
+        {
+            label : "Wyloguj",
+            icon:"fa-lock",
+            command : ()=>{
+                this.logout();
+            }
         }];
+
+        this.activeItem = this.tabMenuItems[0];
     }
 
     isLoggedIn() {
@@ -39,7 +54,9 @@ export class AppComponent {
     }
 
     logout(){
+
         this.authService.logout();
         this.router.navigateByUrl('/');
+        this.activeItem = this.tabMenuItems[0];
     }
 }

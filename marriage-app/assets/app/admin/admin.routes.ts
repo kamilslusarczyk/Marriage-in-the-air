@@ -17,7 +17,6 @@ export const ADMIN_ROUTES: Routes= [
     { path: "news/archive", component: AdminNewsArchiveComponent},
     { path: "gallery", component: AdminGalleryComponent},
     { path: "createDummy", component: SignInComponent },
-    { path: "signin", component: SignInComponent},
     { path: "stats", component: StatisticsComponent},
     { path: "todos", component: TodoComponent},
     { path: "details", component: AdminMarriageDetailsComponent},

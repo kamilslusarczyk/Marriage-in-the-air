@@ -1,1 +1,18 @@
-<news-list></news-list>
+
+
+    <nav class="navbar navbar-light bg-light internal-nav">
+        <form class="form-inline" >
+            <input class="form-control mr-sm-2" type="search" placeholder="Search newses" aria-label="Search" [formControl]="searchNewsesControl" (keyup)="searchInputChanged()">
+        </form>
+    </nav>
+   
+
+    <div class="card mb-3" *ngFor="let news of FilteredNewses">
+        <div class="card-header">
+            {{news.topic}}
+        </div>
+        <div class="card-body">
+            {{news.content}}
+        </div>
+    </div>              
+
