@@ -9,7 +9,7 @@
 
     <div class="card mb-3" *ngFor="let news of FilteredNewses">
         <div class="card-header">
-            {{news.topic}}
+            {{news.topic}} <span class="float-right">Autor: {{news.user.firstName}} | {{news.dateOfPublication | date:'medium'}}</span>
         </div>
         <div class="card-body">
             {{news.content}}

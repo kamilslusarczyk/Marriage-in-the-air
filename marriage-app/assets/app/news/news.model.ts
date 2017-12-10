@@ -1,6 +1,6 @@
 export class News {
     constructor(private topic : string, public content: string, public dateOfPublication: Date,
-         public newsId?: string, public userId?: string, public isArchived? : boolean) {
+         public _id?: string, public user?: {_id:number, firstName:string, lastName:string}, public isArchived? : boolean) {
 
     }
 }

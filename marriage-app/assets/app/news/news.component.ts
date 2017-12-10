@@ -21,7 +21,12 @@ export class NewsComponent implements OnInit {
 
     searchInputChanged(): void {
         var controlValueParsed = String(this.searchNewsesControl.value);
-        this.FilteredNewses = this.stringExtensionService.filterByContent(this.Newses, controlValueParsed);
+        this.FilteredNewses = this.stringExtensionService
+        .filterByProperties(this.Newses,{
+            content:controlValueParsed,
+            topic:controlValueParsed
+        });
+        debugger;
         // this.FilteredNewses = this.Newses.filter(x => x.content.toLowerCase().includes(controlValueParsed.toLowerCase()));
     }
 
