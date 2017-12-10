@@ -3,7 +3,7 @@
             {{news.topic}} - {{news.dateOfPublication  | date:'mediumDate' }}. Autor: {{news.user.firstName}}
             <i class="fa fa-trash-o float-right ml-2" aria-hidden="true" (click)="removeNews(news)" pTooltip="Usuń"></i> 
             <i class="fa fa-pencil-square-o float-right ml-2" aria-hidden="true" (click)="editNews(news)" pTooltip="Edytuj"></i>
-            <i class="fa fa-archive float-right ml-2" aria-hidden="true" (click)="archive(news)" pTooltip="Archiwizuj"></i>
+            <i class="fa fa-archive float-right ml-2" aria-hidden="true" (click)="archiveNews(news)" pTooltip="Archiwizuj"></i>
     </div>
     <div class="card-body">
        {{news.content}}

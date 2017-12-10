@@ -8,9 +8,10 @@ import { ParticipantsComponent } from "../participants/participants.component";
 import { AdminGalleryComponent } from "./gallery/admin-gallery.component";
 import { AdminNewsAddComponent } from "./news/admin-news-add.component";
 import { AdminNewsArchiveComponent } from "./news/admin-news-archive.component";
+import { AdminWelcomeComponent } from "./home/admin-welcome.component";
 
 export const ADMIN_ROUTES: Routes= [
-    { path:"", redirectTo:"news", pathMatch:"full" },
+    { path:"", component: AdminWelcomeComponent },
     { path: "news", component: AdminNewsComponent},
     { path: "news/add", component: AdminNewsAddComponent},
     { path: "news/archive", component: AdminNewsArchiveComponent},

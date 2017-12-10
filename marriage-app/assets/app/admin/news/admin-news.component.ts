@@ -24,7 +24,7 @@ export class AdminNewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.newsService.getNewsesGeneric<News[]>()
+        this.newsService.getNewsesGeneric<News[]>({isArchived : false})
         .subscribe(x=> {
             this.newses = x.Data;
             console.log(x);
@@ -34,7 +34,7 @@ export class AdminNewsComponent implements OnInit {
 private removeNews(news : News){
     console.log(news);
 
-    this.confirmationService.confirm({message:"Czy jesteś pewien?",
+    this.confirmationService.confirm({message:"Czy jesteś pewien, że chcesz usunąć wpis?",
     accept:()=>{
         this.newsService.deleteNewsGeneric(news)
         .subscribe(x=>{
@@ -48,6 +48,20 @@ private removeNews(news : News){
 
 private editNews(news :News){
     console.log(news);
+}
+
+private archiveNews(news : News){
+    this.confirmationService.confirm({message:"Czy jesteś pewien, że chcesz przenieść wpis do archiwum?",
+    accept:()=>{
+        news.isArchived = true;
+        this.newsService.updateNewsGeneric(news)
+        .subscribe(x=>{
+            if(x.success){
+               this.messageHelperService.addSingleMessage(SeverityEnum.Success,"Przeniesiono do archiwum!",""); 
+               _.remove(this.newses,y=>(<News>y) == news);
+            }
+        })
+    }})
 }
 
 }

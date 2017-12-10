@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "admin-welcome.component.scss"
+    ],
+    "names": [],
+    "file": "admin-welcome.component.css"
+}

@@ -9,7 +9,9 @@ var AuthenticationService = require('../services/authenticationService');
 
 //get all
 router.get('/', function (req, res, next) {
-    News.find()
+    var conditions = JSON.parse(req.query.conditions);
+    console.log(typeof conditions.isArchived);
+    News.find(conditions)
         .populate('user', 'firstName')
         .exec(function (err, docs) {
             var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
@@ -19,7 +21,8 @@ router.get('/', function (req, res, next) {
 
             res.status(200).json({
                 Message: "Newses retreived properly.",
-                Data: docs
+                Data: docs,
+                success : true
             });
         });
 });
@@ -105,6 +108,32 @@ router.delete('/:id', function (req, res, next) {
             Data: true
         });
     });
+});
+
+//update
+router.put("/", function(req,res,next){
+    var verified = AuthenticationService.AuthenticationHelper.Authenticate(req.query.token, next, res);
+    if(!verified)
+        return res.status(401).json({
+            title: "NOT PERMITTED",
+            error: "NOT PERMITTED"
+        });
+
+    var news = req.body;
+
+    News.update({"_id" : news._id}, news ,function(err,news){
+        var error = ExceptionService.MongoosHelper.HandleRequest(err, null, news, res);
+
+        if (error)
+            return error;
+
+        res.status(200).json({
+            Message: "Ok!",
+            success : true,
+            Data: true});
+    });
+
+
 });
 
 module.exports = router;

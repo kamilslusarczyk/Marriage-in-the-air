@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,GADD,AAAA,QAAQ,AACP,MAAO,CAAA;EACH,MAAM,EAAE,OAAO;CAClB",
+    "sources": [
+        "admin-news-archive.component.scss"
+    ],
+    "names": [],
+    "file": "admin-news-archive.component.css"
+}

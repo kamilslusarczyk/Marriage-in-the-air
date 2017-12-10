@@ -14,8 +14,12 @@ export class AdminHomeComponent implements OnInit {
           {
             label: "Newsy",
             icon: "fa-file-o",
-            routerLink :["news"],
             items: [{
+                    label:"Wszystkie newsy",
+                    icon:"fa-list",
+                    routerLink:["news"]
+                },
+                {
                     label: "Dodaj nowy",
                     icon: "fa-plus",
                     routerLink: ["news/add"]

@@ -1,1 +1,9 @@
-here archived news will be displayed
+<div class="card mb-2" *ngFor="let news of newses">
+    <div class="card-header">
+            {{news.topic}} - {{news.dateOfPublication  | date:'mediumDate' }}. Autor: {{news.user.firstName}}
+            <i class="fa fa-undo float-right ml-2" aria-hidden="true" (click)="restoreNews(news)" pTooltip="Przywróć"></i>
+    </div>
+    <div class="card-body">
+       {{news.content}}
+    </div>
+</div>
