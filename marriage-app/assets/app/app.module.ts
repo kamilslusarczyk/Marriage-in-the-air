@@ -33,6 +33,7 @@ import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
 import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } from './admin/news/admin-news-archive.component';
 import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AdminPlannerComponent } from './admin/planner/admin-planner.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { HomepageComponent } from './homepage/homepage.component';
         AdminNewsAddComponent,
         AdminNewsArchiveComponent,
         AdminWelcomeComponent,
-        HomepageComponent
+        HomepageComponent,
+        AdminPlannerComponent
 
     ],
     imports: [BrowserModule,

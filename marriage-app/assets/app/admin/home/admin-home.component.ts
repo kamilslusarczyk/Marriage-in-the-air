@@ -48,6 +48,11 @@ export class AdminHomeComponent implements OnInit {
                 label: "xyz",
                 icon: "fa-plus",
             }]
+        },
+        {
+            label: "Planer",
+            icon: "fa-list-alt",
+            routerLink:["planner"]
         }
         ];
     }

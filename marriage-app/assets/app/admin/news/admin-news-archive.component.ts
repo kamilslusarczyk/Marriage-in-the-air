@@ -4,6 +4,7 @@ import { News } from "../../news/news.model";
 import { MessageHelperService } from "../../common/messageHelper.service";
 import { SeverityEnum } from "../../common/messageSeverity.enum";
 import * as _ from "lodash";
+import { ConfirmationService } from "primeng/components/common/confirmationservice";
 
 @Component({
     selector:"admin-news-archive",
@@ -13,7 +14,9 @@ import * as _ from "lodash";
 export class AdminNewsArchiveComponent implements OnInit{
 
     private newses : News[];
-    constructor(private newsService : NewsService, private messageHelperService : MessageHelperService){
+    constructor(private newsService : NewsService, 
+        private messageHelperService : MessageHelperService,
+        private confirmationService : ConfirmationService){
 
     }
 
@@ -29,14 +32,20 @@ export class AdminNewsArchiveComponent implements OnInit{
     }
 
     private restoreNews(news : News){
-        news.isArchived = false;
-        this.newsService.updateNewsGeneric(news)
-        .subscribe(x=>{
-            if(x.success){
-                this.messageHelperService.addSingleMessage(SeverityEnum.Success,"Wpis został przywrócony","");
-                _.remove(this.newses,x=>x===news);
-            }
-        })
+
+        this.confirmationService.confirm({message:"Czy jesteś pewien, że chcesz przywrócić wpis?",
+        accept:()=>{
+            news.isArchived = false;
+            this.newsService.updateNewsGeneric(news)
+            .subscribe(x=>{
+                if(x.success){
+                    this.messageHelperService.addSingleMessage(SeverityEnum.Success,"Wpis został przywrócony","");
+                    _.remove(this.newses,x=>x===news);
+                }
+            })
+        }})
+
+
     }
 
     
