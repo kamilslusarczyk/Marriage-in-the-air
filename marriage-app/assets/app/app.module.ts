@@ -34,6 +34,7 @@ import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } 
 import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminPlannerComponent } from './admin/planner/admin-planner.component';
+import { AngularMaterialModule } from './common/angular-material.module';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { AdminPlannerComponent } from './admin/planner/admin-planner.component';
         routing,
         NgxChartsModule,
         BrowserAnimationsModule,
-        PrimeNgModule],
+        PrimeNgModule,
+        AngularMaterialModule],
     providers: [AuthService,
         MarriageDetailsService,
         StatisticsService,
