@@ -1,15 +1,27 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p-tabMenu [model]="tabMenuItems" [activeItem]="activeItem"></p-tabMenu>
-
+            <!-- <p-tabMenu [model]="tabMenuItems" [activeItem]="activeItem"></p-tabMenu> -->
+<!-- 
             <mat-tab-group>
                 <mat-tab label="Strona główna">Content 1</mat-tab>
                 <mat-tab label="Newsy">Content 2</mat-tab>
                 <mat-tab label="Tymczasowe logowanie">Content 2</mat-tab>
                 <mat-tab label="Tymczasowe wylogowanie">Content 2</mat-tab>
                 <mat-tab label="Panel administratora">Content 2</mat-tab>
-              </mat-tab-group>
+              </mat-tab-group> -->
+
+              <nav mat-tab-nav-bar>
+                <a mat-tab-link
+                   *ngFor="let routeLink of routeLinks; let i = index;"
+                   [routerLink]="routeLink.link"
+                   routerLinkActive="mat-tab-link-active"
+                   [active]="activeLinkIndex === i"
+                   (click)="activeLinkIndex = i; routeLink.clickMethod()"
+                   [routerLinkActiveOptions]="{exact: true}">
+                    {{routeLink.label}}
+                </a>
+            </nav>
         </div>
     </div>
     <div class="row">

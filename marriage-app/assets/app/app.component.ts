@@ -14,12 +14,20 @@ export class AppComponent {
 
     private tabMenuItems : [any];
     private activeItem : MenuItem;
+    private routeLinks : {link:string, label:string, index:number, clickMethod :()=>void}[];
+    private activeLinkIndex : number;
+
+    private test () : void{
+        console.log('test');
+    }
 
     constructor(private authService: AuthService, private router: Router, private statisticsService: StatisticsService){
         router.events.subscribe((event) => {
             if(event instanceof NavigationStart)
                 this.statisticsService.handleRequestForStatistics(event);
         });
+
+        this.activeLinkIndex = 0;
 
         this.tabMenuItems = [{
             label : "Strona główna",
@@ -42,6 +50,36 @@ export class AppComponent {
             label : "Wyloguj",
             icon:"fa-lock",
             command : ()=>{
+                this.logout();
+            }
+        }];
+
+        this.routeLinks =[{
+            link:"",
+            label : "Strona główna",
+            index: 0,
+            clickMethod : ()=>{}
+        },{
+            link:"/news",
+            label : "Newsy",
+            index:1,
+            clickMethod : ()=>{}
+        },{
+            link: "/administration",
+            label : "Panel administratora",
+            index : 2,
+            clickMethod : ()=>{}
+        },{
+            link: "/signin",
+            label : "Tymczasowe logowanie",
+            index : 3,
+            clickMethod : ()=>{}
+        },
+        {
+            link: "/",
+            label : "Tymczasowe wylogowanie",
+            index : 4,
+            clickMethod : ()=>{
                 this.logout();
             }
         }];
