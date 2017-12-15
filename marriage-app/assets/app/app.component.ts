@@ -12,9 +12,8 @@ import { MenuItem } from "primeng/primeng";
 })
 export class AppComponent {
 
-    private tabMenuItems : [any];
     private activeItem : MenuItem;
-    private routeLinks : {link:string, label:string, index:number, clickMethod :()=>void}[];
+    private routesConfig : { activeLinkIndex: number, routes:{link:string, label:string, index:number, clickMethod :()=>void}[]};
     private activeLinkIndex : number;
 
     private test () : void{
@@ -28,63 +27,37 @@ export class AppComponent {
         });
 
         this.activeLinkIndex = 0;
-
-        this.tabMenuItems = [{
-            label : "Strona główna",
-            icon: "fa-home",
-            routerLink:[""]
-        },{
-            label:"Newsy",
-            icon: "fa-newspaper-o",
-            routerLink:["/news"]
-        },{
-            label : "Panel administratora",
-            icon:"fa-lock",
-            routerLink:["/administration"]
-        },{
-            label : "Tymczasowe logowanie",
-            icon:"fa-lock",
-            routerLink:["/signin"]
-        },
-        {
-            label : "Wyloguj",
-            icon:"fa-lock",
-            command : ()=>{
-                this.logout();
+        this.routesConfig ={ 
+            activeLinkIndex:0,
+            routes:[{
+                link:"",
+                label : "Strona główna",
+                index: 0,
+                clickMethod : ()=>{}
+            },{
+                link:"/news",
+                label : "Newsy",
+                index:1,
+                clickMethod : ()=>{}
+            },{
+                link: "/administration",
+                label : "Panel administratora",
+                index : 2,
+                clickMethod : ()=>{}
+            },{
+                link: "/signin",
+                label : "Tymczasowe logowanie",
+                index : 3,
+                clickMethod : ()=>{}
+            },
+            {
+                link: "/",
+                label : "Tymczasowe wylogowanie",
+                index : 4,
+                clickMethod : ()=>{
+                    this.logout();
             }
-        }];
-
-        this.routeLinks =[{
-            link:"",
-            label : "Strona główna",
-            index: 0,
-            clickMethod : ()=>{}
-        },{
-            link:"/news",
-            label : "Newsy",
-            index:1,
-            clickMethod : ()=>{}
-        },{
-            link: "/administration",
-            label : "Panel administratora",
-            index : 2,
-            clickMethod : ()=>{}
-        },{
-            link: "/signin",
-            label : "Tymczasowe logowanie",
-            index : 3,
-            clickMethod : ()=>{}
-        },
-        {
-            link: "/",
-            label : "Tymczasowe wylogowanie",
-            index : 4,
-            clickMethod : ()=>{
-                this.logout();
-            }
-        }];
-
-        this.activeItem = this.tabMenuItems[0];
+        }]};
     }
 
     isLoggedIn() {

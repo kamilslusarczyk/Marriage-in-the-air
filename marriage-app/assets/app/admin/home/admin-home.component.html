@@ -1,7 +1,22 @@
 <div class="row">
     <br>
     <div class="col-3">
-       <p-panelMenu [model]="menuItems" [style]="{}" [multiple]="false"></p-panelMenu> 
+       <mat-accordion>
+            <mat-expansion-panel *ngFor="let heading of menuItems">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <i class="fa {{heading.icon}}"></i> &nbsp; {{heading.label}} 
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <ul>
+                    <li *ngFor="let subHeading of heading.items">
+                        <a [routerLink]="subHeading.routerLink"><i class="fa {{subHeading.icon}}"></i>&nbsp;{{subHeading.label}} </a>
+                        <hr>
+                    </li>
+                </ul>
+            </mat-expansion-panel>
+          </mat-accordion>
+
     </div>
     <div class="col-9">
         <router-outlet></router-outlet>

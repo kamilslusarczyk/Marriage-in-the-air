@@ -3,16 +3,16 @@ var Schema = mongoose.Schema;
 
 var guestSchema = new Schema({
     name :  {
-        type : string,
+        type : String,
         required : true
     },
     surname : {
-        type: string,
+        type: String,
         required : true
     },
-    phoneNumber : string,
-    email : string,
-    confirmationCode : string,
+    phoneNumber : String,
+    email : String,
+    confirmationCode : String,
     age :{
         type : number,
         required : false

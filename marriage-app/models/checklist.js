@@ -2,14 +2,22 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 let checklistSchema = new Schema({
-    name : {
-        type: string,
-        required : true
+    name: {
+        type:String,
+        required:true
     },
-    tasks:{
-        type: Schema.Types.ObjectId,
-        ref : 'ChecklistTask'
-    }
+    description: String,
+    tasks:[{
+        name:{
+            type:String,
+            required:true
+        },
+        isCompleted :{
+            type:Boolean,
+            required:true
+        },
+        description : String
+    }]
 })
 
 module.exports = mongoose.model("Checklist", checklistSchema);

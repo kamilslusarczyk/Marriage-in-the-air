@@ -11,7 +11,7 @@ var newsRoutes = require('./routes/news');
 var adminRoutes = require('./routes/admin');
 var marriageDetailsRoutes = require('./routes/marriage-details');
 var statisticsRoutes = require('./routes/statistics');
-var todosRoutes = require('./routes/todos');
+var checklistRoutes = require('./routes/checklist');
 var participantsRoutes = require('./routes/participants');
 // require('./public/stylesheets/styles.less');
 
@@ -42,7 +42,7 @@ app.use('/news', newsRoutes);
 app.use('/admin', adminRoutes);
 app.use('/details', marriageDetailsRoutes);
 app.use('/stats', statisticsRoutes);
-app.use('/todos', todosRoutes);
+app.use('/checklist', checklistRoutes);
 app.use('/participants', participantsRoutes);
 
 // catch 404 and forward to error handler

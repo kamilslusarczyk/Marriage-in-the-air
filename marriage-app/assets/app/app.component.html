@@ -1,32 +1,28 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <!-- <p-tabMenu [model]="tabMenuItems" [activeItem]="activeItem"></p-tabMenu> -->
-<!-- 
-            <mat-tab-group>
-                <mat-tab label="Strona główna">Content 1</mat-tab>
-                <mat-tab label="Newsy">Content 2</mat-tab>
-                <mat-tab label="Tymczasowe logowanie">Content 2</mat-tab>
-                <mat-tab label="Tymczasowe wylogowanie">Content 2</mat-tab>
-                <mat-tab label="Panel administratora">Content 2</mat-tab>
-              </mat-tab-group> -->
-
+            <mat-card>
               <nav mat-tab-nav-bar>
                 <a mat-tab-link
-                   *ngFor="let routeLink of routeLinks; let i = index;"
+                   *ngFor="let routeLink of routesConfig.routes; let i = index;"
                    [routerLink]="routeLink.link"
                    routerLinkActive="mat-tab-link-active"
-                   [active]="activeLinkIndex === i"
-                   (click)="activeLinkIndex = i; routeLink.clickMethod()"
+                   [active]="routesConfig.activeLinkIndex === i"
+                   (click)="routesConfig.activeLinkIndex = i; routeLink.clickMethod()"
                    [routerLinkActiveOptions]="{exact: true}">
                     {{routeLink.label}}
                 </a>
             </nav>
+        </mat-card>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
+            <mat-card>
                 <router-outlet></router-outlet>
+            </mat-card>
+               
         </div>
 
     </div>
@@ -34,4 +30,4 @@
 
 <!-- for showing messages on every CRUD action -->
 <p-growl [(value)]="msgs"></p-growl>
-<p-confirmDialog header="Potwierdzenie" icon="fa fa-question-circle" width="425"></p-confirmDialog>
+<p-confirmDialog header="Potwierdzenie" acceptLabel="Tak" rejectLabel="Nie" icon="fa fa-question-circle" width="425"></p-confirmDialog>

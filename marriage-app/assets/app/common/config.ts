@@ -7,7 +7,7 @@ export let config = {
         adminSignIn: "/signin",
         marriageDetails: "/details",
         statistics: "/stats",
-        todos: "/todos",
+        checklist: "/checklist",
         participants: "/participants"
     }
 };

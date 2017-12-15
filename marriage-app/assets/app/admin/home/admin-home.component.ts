@@ -33,7 +33,6 @@ export class AdminHomeComponent implements OnInit {
         {
             label : "Galeria",
             icon : "fa-picture-o",
-            routerLink : ["gallery"],
             items: [{
                 label: "Dodaj zdjęcie",
                 icon: "fa-plus",
@@ -43,16 +42,20 @@ export class AdminHomeComponent implements OnInit {
         {
             label : "Statystyki",
             icon : "fa-bar-chart-o",
-            routerLink : ["stats"],
             items: [{
                 label: "xyz",
                 icon: "fa-plus",
+                routerLink : ["stats"],
             }]
         },
         {
             label: "Planer",
             icon: "fa-list-alt",
-            routerLink:["planner"]
+            items:[{
+                label:"Dodaj nowy",
+                icon: "fa-plus",
+                routerLink: ["planner/add"]
+            }]
         }
         ];
     }

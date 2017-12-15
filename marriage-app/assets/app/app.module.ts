@@ -17,11 +17,7 @@ import { StatisticsComponent } from "./admin/stats/admin-stats.component";
 import { StatisticsService } from "./statistics/statistics.service";
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { TodosService } from "./toDo/toDo.service";
 import { StringExtensionService } from "./common/stringExtensions.service";
-import { TodoComponent } from "./toDo/toDo.component";
-import { TodosListComponent } from "./toDo/todo-list.component";
-import { TodoItemComponent } from "./toDo/todo-item.component";
 import { PrimeNgModule } from "./common/primeng.module";
 import { MessageHelperService } from "./common/messageHelper.service";
 import { AdminMarriageDetailsComponent } from "./admin/admin-marriage-details.component";
@@ -33,8 +29,9 @@ import { AdminGalleryComponent } from "./admin/gallery/admin-gallery.component";
 import { DatePipe } from "@angular/common";import { AdminNewsArchiveComponent } from './admin/news/admin-news-archive.component';
 import { AdminWelcomeComponent } from './admin/home/admin-welcome.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { AdminPlannerComponent } from './admin/planner/admin-planner.component';
+import { AdminAddPlannerComponent } from './admin/planner/admin-add-planner.component';
 import { AngularMaterialModule } from './common/angular-material.module';
+import { ChecklistService } from './admin/planner/checklist.service';
 
 
 @NgModule({
@@ -47,9 +44,6 @@ import { AngularMaterialModule } from './common/angular-material.module';
         MarriageDetailsComponent,
         AdminMarriageDetailsComponent,
         StatisticsComponent,
-        TodoComponent,
-        TodosListComponent,
-        TodoItemComponent,
         ParticipantsComponent,
         ParticipantItemComponent,
         AdminGalleryComponent,
@@ -57,7 +51,7 @@ import { AngularMaterialModule } from './common/angular-material.module';
         AdminNewsArchiveComponent,
         AdminWelcomeComponent,
         HomepageComponent,
-        AdminPlannerComponent
+        AdminAddPlannerComponent
 
     ],
     imports: [BrowserModule,
@@ -73,7 +67,7 @@ import { AngularMaterialModule } from './common/angular-material.module';
     providers: [AuthService,
         MarriageDetailsService,
         StatisticsService,
-        TodosService,
+        ChecklistService,
         StringExtensionService,
          MessageHelperService,
          ParticipantsService,

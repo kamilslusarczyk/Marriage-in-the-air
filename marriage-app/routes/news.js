@@ -74,7 +74,7 @@ router.post('/', function (req, res, next) {
                 return error;
 
             user.newses.push(result);
-            user.save();
+            user.save();ą
 
             res.status(201).json({
                 Message: "Ok!",

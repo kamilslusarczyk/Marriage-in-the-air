@@ -1,5 +1,6 @@
 export class Checklist{
     name : string;
+    description : string;
     tasks : ChecklistTask[];
 }
 
