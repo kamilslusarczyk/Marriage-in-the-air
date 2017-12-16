@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let checklist of checkLists">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{checklist.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{checklist.description}}
+            </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <!-- here tasks!! -->
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>

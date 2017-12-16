@@ -11,8 +11,8 @@ router.post('/', function (req, res, next) {
             return error;
 
         res.status(201).json({
-            Message: "Statistics saved!",
-            Data: true
+            message: "Statistics saved!",
+            data: true
         });
     });
 
@@ -27,8 +27,8 @@ router.get('/', function (req, res, next) {
                 return error;
 
             res.status(200).json({
-                Message: "Statistics retreived properly.",
-                Data: docs
+                message: "Statistics retreived properly.",
+                data: docs
             });
         });
 });

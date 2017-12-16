@@ -34,7 +34,7 @@ export class NewsComponent implements OnInit {
 
         this.newsService.getNewsesGeneric<News[]>({isArchived : false}).subscribe(
             data => {
-                this.Newses = data.Data;
+                this.Newses = data.data;
                 this.FilteredNewses = this.Newses;
             },
             err => {

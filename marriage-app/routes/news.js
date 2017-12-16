@@ -20,8 +20,8 @@ router.get('/', function (req, res, next) {
                 return error;
 
             res.status(200).json({
-                Message: "Newses retreived properly.",
-                Data: docs,
+                message: "Newses retreived properly.",
+                data: docs,
                 success : true
             });
         });
@@ -38,8 +38,8 @@ router.get('/:id', function (req, res, next) {
             return error;
 
         res.status(200).json({
-            Message: "News retreived properly.",
-            Data: news
+            message: "News retreived properly.",
+            data: news
         });
     });
 });
@@ -57,7 +57,7 @@ router.post('/', function (req, res, next) {
 
     User.findById(decoded.user._id, function (err, user) {
         var error = ExceptionService.MongoosHelper.HandleRequest(err, null, user, res);
-        console.log(error,"adsadssa");
+
         if (error)
             return error;
 
@@ -74,11 +74,11 @@ router.post('/', function (req, res, next) {
                 return error;
 
             user.newses.push(result);
-            user.save();ą
+            user.save();
 
             res.status(201).json({
-                Message: "Ok!",
-                Data: true
+                message: "Ok!",
+                data: true
             });
         });
     })
@@ -103,9 +103,9 @@ router.delete('/:id', function (req, res, next) {
             return error;
 
         res.status(201).json({
-            Message: "Ok!",
+            message: "Ok!",
             success : true,
-            Data: true
+            data: true
         });
     });
 });
@@ -128,9 +128,9 @@ router.put("/", function(req,res,next){
             return error;
 
         res.status(200).json({
-            Message: "Ok!",
+            message: "Ok!",
             success : true,
-            Data: true});
+            data: true});
     });
 
 

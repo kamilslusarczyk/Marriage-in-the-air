@@ -26,7 +26,7 @@ export class MarriageDetailsComponent implements OnInit {
 
         this.marriageDetailsService.get().subscribe(
             data => {
-                this.marriageDetails = data.Data[0];
+                this.marriageDetails = data.data[0];
             },
             err => {
                 console.log('Something went wrong!');

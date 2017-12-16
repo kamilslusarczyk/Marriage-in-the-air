@@ -24,8 +24,8 @@ router.post("/dummyCreate", function (req, res, next) {
             return error;
 
         res.status(200).json({
-            Message: "User created properly.",
-            Data: result
+            message: "User created properly.",
+            data: result
         });
     });
 
@@ -40,8 +40,8 @@ router.post("/signin", function (req, res, next) {
 
         if (!bcrypt.compareSync(req.body.password, user.password)) {
             return res.status(501).json({
-                Message: "Password or username incorrect",
-                Data: user
+                message: "Password or username incorrect",
+                data: user
             });
         }
 
@@ -52,7 +52,7 @@ router.post("/signin", function (req, res, next) {
             });
 
         res.status(200).json({
-            Message: "Logged in",
+            message: "Logged in",
             token: token,
             userId: user._id
         });

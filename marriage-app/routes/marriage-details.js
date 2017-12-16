@@ -12,8 +12,8 @@ router.get('/', function (req, res, next) {
         .exec(function (err, docs) {
             if (err)
                 return res.status(500).json({
-                    Message: "nope.",
-                    Data: err
+                    message: "nope.",
+                    data: err
                 });
             var error = ExceptionService.MongoosHelper.HandleRequest(err, null, docs, res);
 
@@ -21,8 +21,8 @@ router.get('/', function (req, res, next) {
                 return error;
 
             res.status(200).json({
-                Message: "Marriage details retreived properly.",
-                Data: docs
+                mssage: "Marriage details retreived properly.",
+                data: docs
             });
         });
 });
@@ -53,8 +53,8 @@ router.post('/', function (req, res, next) {
                 return error;
 
             res.status(201).json({
-                Message: "Ok!",
-                Data: true
+                message: "Ok!",
+                data: true
             });
         });
     });

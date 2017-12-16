@@ -5,12 +5,25 @@ import {MatCardModule} from "@angular/material/card"
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
-
+import {MatInputModule, MatNativeDateModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
 imports:[BrowserAnimationsModule],
-exports:[MatTabsModule, MatCardModule, MatExpansionModule,MatListModule,MatFormFieldModule,MatInputModule]
+exports:[
+     MatTabsModule,
+     MatCardModule,
+     MatExpansionModule,
+     MatListModule,
+     MatFormFieldModule,
+     MatInputModule,
+     MatDialogModule,
+     MatButtonModule,
+     MatDatepickerModule,
+     MatNativeDateModule,
+    ]
 
 })
 export class AngularMaterialModule{

@@ -1,6 +1,23 @@
 button:hover {
   cursor: pointer;
 }
+
+#add-task:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+ol {
+  padding: none;
+}
+
+ol li {
+  padding: 5px 10px;
+}
+
+button {
+  margin-bottom: 10px;
+}
  
 
  /*# sourceMappingURL= admin-add-planner.component.css.map */

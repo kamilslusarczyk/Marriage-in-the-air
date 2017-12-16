@@ -3,7 +3,7 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
 import { AuthService } from "../../auth/auth.service";
 import { config } from "../../common/config";
-import { ResponseBase } from "../../common/responseBase";
+import { ResponseBase, ResponseBaseGeneric } from "../../common/responseBase";
 import { Checklist } from "./admin-planner.models";
 
 @Injectable()
@@ -16,9 +16,9 @@ export class ChecklistService {
         this.token = this.authService.getToken();
     }
 
-    // getAll(): Observable<ResponseBase> {
-    //     return this.http.get<ResponseBase>(this._apiPath + this.token);
-    // }
+    getAll(): Observable<ResponseBaseGeneric<Checklist[]>> {
+        return this.http.get<ResponseBaseGeneric<Checklist[]>>(this._apiPath + this.token);
+    }
 
     add(checklist: Checklist): Observable<ResponseBase> {
         return this.http.post<ResponseBase>(this._apiPath + this.token, checklist);

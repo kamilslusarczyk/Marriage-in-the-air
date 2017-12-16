@@ -1,32 +1,25 @@
-<form [formGroup]="addNewPlannerFormGroup" (ngSubmit)="addPlanner()">
-    <mat-form-field>
-        <input matInput type="text" formControlName="name" placeholder="Nazwa listy zadań"/>
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-        <input matInput type="text" formControlName="description" placeholder="Opis listy zadań"/>
-    </mat-form-field>
+<mat-card>
+    <form [formGroup]="addNewPlannerFormGroup">
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+            <input matInput type="text" formControlName="name" placeholder="Nazwa listy zadań"/>
+        </mat-form-field>
+        <br/>
+        <mat-form-field [ngStyle]="{'width':'100%'}">
+          <input matInput type="text" formControlName="description" placeholder="Opis listy zadań"/>
+        </mat-form-field>
 
-    <div class="form-group">
-            TODO początkowa lista zadań do wykonania
-    </div>
+        <br/>
+        <span id="add-task" (click)="addTask()">
+        <i class="material-icons">playlist_add</i> Dodaj zadanie
+        </span>
 
-    <button class="btn btn-primary float-right" type="submit" [disabled] ="!addNewPlannerFormGroup.valid">Dodaj</button>
-</form>
-       
-<!--       
-       <div class="example-container">
-            <mat-form-field>
-              <input matInput placeholder="Input">
-            </mat-form-field>
-          
-            <mat-form-field>
-              <textarea matInput placeholder="Textarea"></textarea>
-            </mat-form-field>
-          
-            <mat-form-field>
-              <mat-select placeholder="Select">
-                <mat-option value="option">Option</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div> -->
+        <ol>
+            <li *ngFor="let task of tasksList">
+                <b>{{task.name}}</b> - {{task.description}} - {{task.dueDate | date:'dd.MM.yyyy'}}
+            </li>
+        </ol>
+        <br/>
+
+        <button class="btn btn-primary float-right" type="button" (click)="addPlanner()" [disabled] ="!addNewPlannerFormGroup.valid">Dodaj</button>
+    </form>
+</mat-card>    

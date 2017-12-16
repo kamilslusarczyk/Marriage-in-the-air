@@ -26,7 +26,7 @@ export class AdminNewsArchiveComponent implements OnInit{
 
             debugger;
             if(resp.success){
-                this.newses = resp.Data
+                this.newses = resp.data
             }
         })
     }

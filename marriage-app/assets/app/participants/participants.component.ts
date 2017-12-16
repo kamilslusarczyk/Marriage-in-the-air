@@ -34,7 +34,7 @@ export class ParticipantsComponent implements OnInit, IAmAbleToShowMessages {
     getParticipants() {
         this.participantsService.getAll().subscribe(
             data => {
-                this.Participants = data.Data;
+                this.Participants = data.data;
                 this.FilteredParticipants = this.Participants;
             },
             err => {

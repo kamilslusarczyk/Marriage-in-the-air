@@ -26,7 +26,7 @@ export class AdminNewsComponent implements OnInit {
     ngOnInit(): void {
         this.newsService.getNewsesGeneric<News[]>({isArchived : false})
         .subscribe(x=> {
-            this.newses = x.Data;
+            this.newses = x.data;
             console.log(x);
         });
     }

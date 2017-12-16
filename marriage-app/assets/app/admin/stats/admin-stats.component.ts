@@ -24,7 +24,7 @@ export class StatisticsComponent implements OnInit {
         
         this.statisticsService.getVisitedUrls().subscribe(
             data => {
-                let dataGroupedByUrl = _.groupBy(data.Data, stats => stats.url);
+                let dataGroupedByUrl = _.groupBy(data.data, stats => stats.url);
 
                 for (var key in dataGroupedByUrl) {
                     var value = dataGroupedByUrl[key];

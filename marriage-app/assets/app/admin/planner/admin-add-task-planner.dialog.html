@@ -1,0 +1,21 @@
+<form [formGroup]="taskGroup">
+    <mat-form-field [ngStyle]="{'width':'100%'}">
+        <input matInput formControlName="name" placeholder="Nazwa zadania" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field [ngStyle]="{'width':'100%'}">
+        <input matInput formControlName="description" placeholder="Opis zadania" />
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Termin wykonania">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    <br/>
+    <br/>
+
+    <button mat-raised-button (click)="addItem()" color="primary" class="float-right" [disabled]="!taskGroup.valid">Dodaj</button>
+    <span style="margin-right:5px"></span>
+    <button mat-raised-button (click)="dialogRef.close(null)" color="warn" class="float-right mr-2">Anuluj</button>
+</form>

@@ -1,14 +1,17 @@
-<form [formGroup]="addNewsFormGroup" (ngSubmit)="addNews()">
+<mat-card>
+        <form [formGroup]="addNewsFormGroup">
 
-    <mat-form-field>
-        <input matInput type="text" formControlName="topic" placeholder="Temat"/>
-    </mat-form-field>
-    <br/>
-    <mat-form-field>
-        <textarea matInput formControlName="content" placeholder="Treść" rows="15" style="overflow-y:hidden">
-        </textarea>
-    </mat-form-field>
+                <mat-form-field [ngStyle]="{'width':'100%'}">
+                    <input matInput type="text" formControlName="topic" placeholder="Temat"/>
+                </mat-form-field>
+                <br/>
+                <mat-form-field [ngStyle]="{'width':'100%'}">
+                    <textarea matInput formControlName="content" placeholder="Treść" rows="15" style="overflow-y:hidden">
+                    </textarea>
+                </mat-form-field>
+            
+                <button class="btn btn-primary float-right" type="button" (click)="addNews()" [disabled]="!addNewsFormGroup.valid">Wyślij</button>
+            </form>
+</mat-card>
 
-    <button class="btn btn-primary float-right" type="submit" [disabled]="!addNewsFormGroup.valid">Wyślij</button>
-</form>
 

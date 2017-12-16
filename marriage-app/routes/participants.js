@@ -22,8 +22,8 @@ router.get('/', function (req, res, next) {
                 return error;
 
             res.status(200).json({
-                Message: "To do's retreived properly.",
-                Data: docs
+                message: "To do's retreived properly.",
+                data: docs
             });
         });
 });
@@ -46,8 +46,8 @@ router.post('/', function (req, res, next) {
             return error;
 
         res.status(201).json({
-            Message: "To do saved!",
-            Data: true
+            message: "To do saved!",
+            data: true
         });
     });
 
@@ -67,8 +67,8 @@ router.put('/', function (req, res, next) {
         Participants.findByIdAndRemove({ "_id": ObjectId(participantId) }, function (err) {
 
             res.status(201).json({
-                Message: "Ok!",
-                Data: true
+                message: "Ok!",
+                data: true
             });
         });
     }
@@ -80,8 +80,8 @@ router.put('/', function (req, res, next) {
                 return error;
 
             res.status(201).json({
-                Message: "Ok!",
-                Data: true
+                message: "Ok!",
+                data: true
             });
         });
     }

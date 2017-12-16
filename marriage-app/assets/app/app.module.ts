@@ -32,6 +32,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdminAddPlannerComponent } from './admin/planner/admin-add-planner.component';
 import { AngularMaterialModule } from './common/angular-material.module';
 import { ChecklistService } from './admin/planner/checklist.service';
+import { AdminAddTaskPlannerDialog } from './admin/planner/admin-add-task-planner.dialog';
+import { MAT_DATE_LOCALE } from '@angular/material';
+import { AdminPlannerAllComponent } from './admin/planner/admin-planner-all.component';
 
 
 @NgModule({
@@ -51,8 +54,9 @@ import { ChecklistService } from './admin/planner/checklist.service';
         AdminNewsArchiveComponent,
         AdminWelcomeComponent,
         HomepageComponent,
-        AdminAddPlannerComponent
-
+        AdminAddPlannerComponent,
+        AdminAddTaskPlannerDialog,
+        AdminPlannerAllComponent
     ],
     imports: [BrowserModule,
         HttpClientModule,
@@ -72,7 +76,9 @@ import { ChecklistService } from './admin/planner/checklist.service';
          MessageHelperService,
          ParticipantsService,
          MessageService,
-         DatePipe],
+         DatePipe,
+        {provide:MAT_DATE_LOCALE, useValue:'pl-PL'}],
+    entryComponents:[AdminAddTaskPlannerDialog],
     bootstrap: [AppComponent]
 })
 export class AppModule {

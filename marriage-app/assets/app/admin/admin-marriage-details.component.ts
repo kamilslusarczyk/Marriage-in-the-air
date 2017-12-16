@@ -28,7 +28,7 @@ export class AdminMarriageDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.marriageService.get().subscribe(
             data => {
-                let result = data.Data[0];
+                let result = data.data[0];
                 this.content.setValue(result.content);
                 this.latitude.setValue(result.latitude);
                 this.longtitude.setValue(result.longtitude);

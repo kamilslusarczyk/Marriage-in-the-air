@@ -3,3 +3,22 @@ button{
         cursor:pointer;
     }
 }
+
+#add-task{
+    &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+ol{
+    padding:none;
+
+    li{
+        padding:5px 10px;
+    }
+}
+
+button{
+    margin-bottom:10px;
+}

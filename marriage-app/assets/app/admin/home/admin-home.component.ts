@@ -55,6 +55,10 @@ export class AdminHomeComponent implements OnInit {
                 label:"Dodaj nowy",
                 icon: "fa-plus",
                 routerLink: ["planner/add"]
+            },{
+                label:"Wszystkie",
+                icon:"fa-list",
+                routerLink:["planner/all"]
             }]
         }
         ];

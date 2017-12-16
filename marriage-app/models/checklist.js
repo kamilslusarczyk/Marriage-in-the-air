@@ -16,7 +16,8 @@ let checklistSchema = new Schema({
             type:Boolean,
             required:true
         },
-        description : String
+        description : String,
+        dueDate : Date
     }]
 })
 

@@ -1,14 +1,14 @@
 export class ResponseBase {
-    Data: any;
-    Message: string;
+    data: any;
+    message: string;
     token: any;
     userId: any;
     success: boolean;
 }
 
 export class ResponseBaseGeneric<T> {
-    Data: T;
-    Message: string;
+    data: T;
+    message: string;
     token: string;
     userId: number;
     success: boolean;
