@@ -48,6 +48,7 @@ export class SignInComponent {
 
             localStorage.setItem('token', data.token);
             localStorage.setItem('userId', data.userId);
+            this.authService.signInEvent.emit(true);
 
             this.router.navigateByUrl('/');
         },

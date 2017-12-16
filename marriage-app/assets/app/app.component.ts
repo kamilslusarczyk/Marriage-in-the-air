@@ -13,12 +13,16 @@ import { MenuItem } from "primeng/primeng";
 export class AppComponent {
 
     private activeItem : MenuItem;
-    private routesConfig : { activeLinkIndex: number, routes:{link:string, label:string, index:number, clickMethod :()=>void}[]};
+    private routesConfig : { activeLinkIndex: number, routes:
+                                                            {
+                                                                link:string, 
+                                                                label:string,
+                                                                index:number, 
+                                                                visible: ()=>boolean,
+                                                                clickMethod :()=>void
+                                                            }[]
+                            };
     private activeLinkIndex : number;
-
-    private test () : void{
-        console.log('test');
-    }
 
     constructor(private authService: AuthService, private router: Router, private statisticsService: StatisticsService){
         router.events.subscribe((event) => {
@@ -26,48 +30,51 @@ export class AppComponent {
                 this.statisticsService.handleRequestForStatistics(event);
         });
 
-        this.activeLinkIndex = 0;
         this.routesConfig ={ 
             activeLinkIndex:0,
             routes:[{
                 link:"",
                 label : "Strona główna",
                 index: 0,
+                visible: ()=>{return true;},
                 clickMethod : ()=>{}
             },{
                 link:"/news",
                 label : "Newsy",
                 index:1,
+                visible:()=>{return true;},
                 clickMethod : ()=>{}
             },{
                 link: "/administration",
                 label : "Panel administratora",
                 index : 2,
+                visible: ()=>{return this.authService.isLoggedIn();},
                 clickMethod : ()=>{}
             },{
                 link: "/signin",
                 label : "Tymczasowe logowanie",
                 index : 3,
-                clickMethod : ()=>{}
+                visible : ()=>{return !this.authService.isLoggedIn();},
+                clickMethod : ()=>{
+                    this.authService.signInEvent.subscribe((isLogged : boolean)=>{debugger;
+                        this.routesConfig.activeLinkIndex = 0;
+                    })
+                }
             },
             {
                 link: "/",
                 label : "Tymczasowe wylogowanie",
                 index : 4,
+                visible: ()=>{return this.authService.isLoggedIn();},
                 clickMethod : ()=>{
                     this.logout();
             }
         }]};
     }
 
-    isLoggedIn() {
-        return this.authService.isLoggedIn();
-    }
-
     logout(){
 
         this.authService.logout();
         this.router.navigateByUrl('/');
-        this.activeItem = this.tabMenuItems[0];
     }
 }

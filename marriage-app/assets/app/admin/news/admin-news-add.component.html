@@ -1,12 +1,14 @@
 <form [formGroup]="addNewsFormGroup" (ngSubmit)="addNews()">
-  <div class="form-group">
-      <input type="text" class="form-control" formControlName="topic" placeholder="Temat"/>
 
-  </div>
-  <div class="form-group">
-      <textarea formControlName="content" class="form-control" placeholder="Treść" rows="15" style="overflow-y:hidden">
-      </textarea>
-  </div>
+    <mat-form-field>
+        <input matInput type="text" formControlName="topic" placeholder="Temat"/>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+        <textarea matInput formControlName="content" placeholder="Treść" rows="15" style="overflow-y:hidden">
+        </textarea>
+    </mat-form-field>
+
     <button class="btn btn-primary float-right" type="submit" [disabled]="!addNewsFormGroup.valid">Wyślij</button>
 </form>
 

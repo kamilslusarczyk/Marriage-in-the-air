@@ -3,15 +3,17 @@
         <div class="col-12">
             <mat-card>
               <nav mat-tab-nav-bar>
-                <a mat-tab-link
-                   *ngFor="let routeLink of routesConfig.routes; let i = index;"
-                   [routerLink]="routeLink.link"
-                   routerLinkActive="mat-tab-link-active"
-                   [active]="routesConfig.activeLinkIndex === i"
-                   (click)="routesConfig.activeLinkIndex = i; routeLink.clickMethod()"
-                   [routerLinkActiveOptions]="{exact: true}">
-                    {{routeLink.label}}
-                </a>
+                <ng-container *ngFor="let routeLink of routesConfig.routes; let i = index;">
+                    <a mat-tab-link
+                    *ngIf="routeLink.visible()"
+                    [routerLink]="routeLink.link"
+                    routerLinkActive="mat-tab-link-active"
+                    [active]="routesConfig.activeLinkIndex === i"
+                    (click)="routesConfig.activeLinkIndex = i; routeLink.clickMethod()"
+                    [routerLinkActiveOptions]="{exact: true}">
+                        {{routeLink.label}}
+                    </a>
+                </ng-container>
             </nav>
         </mat-card>
         </div>
