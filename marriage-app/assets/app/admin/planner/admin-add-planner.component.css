@@ -18,6 +18,11 @@ ol li {
 button {
   margin-bottom: 10px;
 }
+
+.fa.fa-times:hover {
+  cursor: pointer;
+  color: red;
+}
  
 
  /*# sourceMappingURL= admin-add-planner.component.css.map */

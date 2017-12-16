@@ -15,7 +15,7 @@
 
         <ol>
             <li *ngFor="let task of tasksList">
-                <b>{{task.name}}</b> - {{task.description}} - {{task.dueDate | date:'dd.MM.yyyy'}}
+                <b>{{task.name}}</b> - {{task.description}} - {{task.dueDate | date:'dd.MM.yyyy'}} <i class="fa fa-times" aria-hidden="true" (click)="removeTask(task)"></i>
             </li>
         </ol>
         <br/>

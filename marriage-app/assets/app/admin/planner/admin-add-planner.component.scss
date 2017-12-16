@@ -22,3 +22,10 @@ ol{
 button{
     margin-bottom:10px;
 }
+
+.fa.fa-times{
+    &:hover{
+        cursor: pointer;
+        color:red;
+    }
+}

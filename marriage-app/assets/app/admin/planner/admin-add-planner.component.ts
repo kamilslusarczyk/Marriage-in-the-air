@@ -29,7 +29,7 @@ export class AdminAddPlannerComponent implements OnInit{
         this.tasksList = [];
         this.addNewPlannerFormGroup = new FormGroup({
             "name" : new FormControl("",Validators.required),
-            "description" : new FormControl("")
+            "description" : new FormControl()
         });
     }
     
@@ -58,7 +58,9 @@ export class AdminAddPlannerComponent implements OnInit{
                 this.tasksList.push(task);
             }
         })
+    }
 
-
+    removeTask(task : ChecklistTask){
+        this.tasksList = this.tasksList.filter(x=>x !== task);
     }
 }

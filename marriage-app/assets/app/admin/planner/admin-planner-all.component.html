@@ -10,6 +10,11 @@
             </mat-panel-description>
             </mat-expansion-panel-header>
         
+            <mat-selection-list>
+                    <mat-list-option *ngFor="let task of checklist.tasks" [selected]="task.isCompleted">
+                      {{task.name}} - {{task.description}} - {{task.dueDate | date:'dd.MM.yyyy'}} {{task.isCompleted}}
+                    </mat-list-option>
+                  </mat-selection-list>
             <!-- here tasks!! -->
         </mat-expansion-panel>
     </mat-accordion>

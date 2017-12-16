@@ -8,10 +8,10 @@
     </mat-form-field>
     <br/>
     <mat-form-field>
-            <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="Termin wykonania">
+            <input matInput formControlName="dueDate" [matDatepicker]="picker" placeholder="Termin wykonania" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
     <br/>
     <br/>
 
