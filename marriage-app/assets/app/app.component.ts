@@ -17,7 +17,8 @@ export class AppComponent {
                                                             {
                                                                 link:string, 
                                                                 label:string,
-                                                                index:number, 
+                                                                index:number,
+                                                                style: {}, 
                                                                 visible: ()=>boolean,
                                                                 clickMethod :()=>void
                                                             }[]
@@ -36,24 +37,35 @@ export class AppComponent {
                 link:"",
                 label : "Strona główna",
                 index: 0,
+                style: {}, 
                 visible: ()=>{return true;},
                 clickMethod : ()=>{}
             },{
                 link:"/news",
                 label : "Newsy",
                 index:1,
+                style: {}, 
+                visible:()=>{return true;},
+                clickMethod : ()=>{}
+            },{
+                link:"/appointment_confirm",
+                label : "Potwierdź zaproszenie",
+                index:1,
+                style: {'font-weight':'bold', 'color': '#00ff5c'}, 
                 visible:()=>{return true;},
                 clickMethod : ()=>{}
             },{
                 link: "/administration",
                 label : "Panel administratora",
                 index : 2,
+                style: {}, 
                 visible: ()=>{return this.authService.isLoggedIn();},
                 clickMethod : ()=>{}
             },{
                 link: "/signin",
                 label : "Tymczasowe logowanie",
                 index : 3,
+                style: {}, 
                 visible : ()=>{return !this.authService.isLoggedIn();},
                 clickMethod : ()=>{
                     this.authService.signInEvent.subscribe((isLogged : boolean)=>{debugger;
@@ -65,6 +77,7 @@ export class AppComponent {
                 link: "/",
                 label : "Tymczasowe wylogowanie",
                 index : 4,
+                style: {}, 
                 visible: ()=>{return this.authService.isLoggedIn();},
                 clickMethod : ()=>{
                     this.logout();

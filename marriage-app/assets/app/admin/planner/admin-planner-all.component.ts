@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Checklist } from "./admin-planner.models";
+import { Checklist, ChecklistTask } from "./admin-planner.models";
 import { ChecklistService } from "./checklist.service";
 import { ResponseBaseGeneric } from "../../common/responseBase";
+import { MatSelectionListChange } from "@angular/material";
 
 @Component({
     selector:"admin-planner-all",
@@ -22,11 +23,9 @@ export class AdminPlannerAllComponent implements OnInit{
         .subscribe((result:ResponseBaseGeneric<Checklist[]>)=>{
 
             if(result.success){
-                debugger;
                 this.checkLists = result.data;
             }
 
         })
     }
-
 }

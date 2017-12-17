@@ -10,7 +10,8 @@
                     routerLinkActive="mat-tab-link-active"
                     [active]="routesConfig.activeLinkIndex === i"
                     (click)="routesConfig.activeLinkIndex = i; routeLink.clickMethod()"
-                    [routerLinkActiveOptions]="{exact: true}">
+                    [routerLinkActiveOptions]="{exact: true}"
+                    [ngStyle]="routeLink.style">
                         {{routeLink.label}}
                     </a>
                 </ng-container>

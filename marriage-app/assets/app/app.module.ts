@@ -35,6 +35,7 @@ import { ChecklistService } from './admin/planner/checklist.service';
 import { AdminAddTaskPlannerDialog } from './admin/planner/admin-add-task-planner.dialog';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { AdminPlannerAllComponent } from './admin/planner/admin-planner-all.component';
+import { AppointmentConfirmation } from './appointment-confirmation/appointment-confirmation';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { AdminPlannerAllComponent } from './admin/planner/admin-planner-all.comp
         HomepageComponent,
         AdminAddPlannerComponent,
         AdminAddTaskPlannerDialog,
-        AdminPlannerAllComponent
+        AdminPlannerAllComponent,
+        AppointmentConfirmation
     ],
     imports: [BrowserModule,
         HttpClientModule,

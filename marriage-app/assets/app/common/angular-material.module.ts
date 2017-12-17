@@ -9,6 +9,7 @@ import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
 imports:[BrowserAnimationsModule],
@@ -23,6 +24,7 @@ exports:[
      MatButtonModule,
      MatDatepickerModule,
      MatNativeDateModule,
+     MatCheckboxModule
     ]
 
 })
