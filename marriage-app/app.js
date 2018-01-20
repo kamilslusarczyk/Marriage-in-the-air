@@ -13,6 +13,7 @@ var marriageDetailsRoutes = require('./routes/marriage-details');
 var statisticsRoutes = require('./routes/statistics');
 var checklistRoutes = require('./routes/checklist');
 var participantsRoutes = require('./routes/participants');
+var guestRoutes = require('./routes/guest');
 // require('./public/stylesheets/styles.less');
 
 var app = express();
@@ -44,6 +45,7 @@ app.use('/details', marriageDetailsRoutes);
 app.use('/stats', statisticsRoutes);
 app.use('/checklist', checklistRoutes);
 app.use('/participants', participantsRoutes);
+app.use('/guest', guestRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

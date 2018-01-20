@@ -8,6 +8,7 @@ export let config = {
         marriageDetails: "/details",
         statistics: "/stats",
         checklist: "/checklist",
-        participants: "/participants"
+        participants: "/participants",
+        guest : "/guest"
     }
 };

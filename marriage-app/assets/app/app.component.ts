@@ -48,7 +48,7 @@ export class AppComponent {
                 visible:()=>{return true;},
                 clickMethod : ()=>{}
             },{
-                link:"/appointment_confirm",
+                link:"/appointment-confirmation",
                 label : "Potwierdź zaproszenie",
                 index:1,
                 style: {'font-weight':'bold', 'color': '#00ff5c'}, 
@@ -63,7 +63,7 @@ export class AppComponent {
                 clickMethod : ()=>{}
             },{
                 link: "/signin",
-                label : "Tymczasowe logowanie",
+                label : "Logowanie",
                 index : 3,
                 style: {}, 
                 visible : ()=>{return !this.authService.isLoggedIn();},
@@ -75,7 +75,7 @@ export class AppComponent {
             },
             {
                 link: "/",
-                label : "Tymczasowe wylogowanie",
+                label : "Wylogowanie",
                 index : 4,
                 style: {}, 
                 visible: ()=>{return this.authService.isLoggedIn();},

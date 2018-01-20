@@ -14,30 +14,30 @@ var guestSchema = new Schema({
     email : String,
     confirmationCode : String,
     age :{
-        type : number,
+        type : Number,
         required : false
     },
     partner:{
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Guest",
         required : false
     },
     children:{
-        type : mongoose.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "Guest",
         required: false
     },
     invitation : {
-        type : mongoose.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         required : true,
         ref : "Invitation"
     },
     accomodation : {
-        type : mongoose.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "Accomodation"
     },
     preferences : {
-        type : mongoose.Types.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "GuestPreference"
     }
 })

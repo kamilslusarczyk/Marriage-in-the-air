@@ -1,0 +1,13 @@
+<p-steps [model]="stepperConfig.stepItems" [activeIndex]="stepperConfig.activeIndex" styleClass="steps-custom"></p-steps>
+
+<div *ngIf="stepperConfig.activeIndex===0">
+    <mat-form-field [ngStyle]="{'width':'100%'}">
+        <input matInput type="text" [(ngModel)]="guest.confirmationCode" (blur)="verifyCode(guest.confirmationCode)"/>
+    </mat-form-field>
+</div>
+
+
+<br>
+
+<button class="btn btn-primary" type="button" [disabled]="stepperConfig.activeIndex < 1" (click)="stepperConfig.activeIndex = stepperConfig.activeIndex-1">Wstecz</button>
+<button class="btn btn-primary" type="button" [disabled]="stepperConfig.activeIndex >= stepperConfig.stepItems.length-1 || !canProceed(stepperConfig.activeIndex)" (click)="stepperConfig.activeIndex = stepperConfig.activeIndex+1">Dalej</button>
